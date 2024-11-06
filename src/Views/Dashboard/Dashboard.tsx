@@ -8,8 +8,12 @@ import {
 import RBreadcrumb from "@/RComponents/RBreadcrumb"
 import RRoutes from "@/RComponents/RRoutes"
 import { dashboardRoutes } from "@/routes/DashboardRoutes"
+import { RootState } from "@/store/store"
+import { useSelector } from "react-redux"
 
 export default function Dashboard() {
+  const count = useSelector((state: RootState) => state.auth.id)
+  console.log("count", count)
   return (
     <SidebarProvider>
       <AppSidebar />
