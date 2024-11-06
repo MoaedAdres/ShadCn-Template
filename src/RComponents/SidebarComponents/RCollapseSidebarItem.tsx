@@ -10,12 +10,12 @@ const RCollapseSidebarItem = ({ item }: any) => {
             hasBorder={false}
         >
             <SidebarMenuItem>
-                <AccordionTrigger className="p-0 font-normal hover:no-underline">
-                    <SidebarMenuButton tooltip={item.title}>
+                <SidebarMenuButton tooltip={item.title}>
+                    <AccordionTrigger className="p-0 font-normal hover:no-underline">
                         {item.icon && <item.icon />}
                         <span>{item.title}</span>
-                    </SidebarMenuButton>
-                </AccordionTrigger>
+                    </AccordionTrigger>
+                </SidebarMenuButton>
                 <AccordionContent>
                     <RSubMenuSidebar subItems={item.items} />
                 </AccordionContent>
