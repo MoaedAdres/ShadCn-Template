@@ -1,19 +1,23 @@
 import { SidebarMenuAction, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import RDropdown from '@/RComponents/RDropDown'
+import { ActionItem } from '@/types/index.type'
 import { Folder, Forward, MoreHorizontal, Trash2 } from 'lucide-react'
 
-const actions: any = [
+const actions: ActionItem[] = [
     {
-        icon: <Folder className="text-muted-foreground" />,
-        name: "View Project"
+        icon: Folder,
+        name: "View Project",
+        actionIconClass: "text-muted-foreground"
     },
     {
-        icon: <Forward className="text-muted-foreground" />,
-        name: "Share Project"
+        icon: Forward,
+        name: "Share Project",
+        actionIconClass: "text-muted-foreground"
     },
     {
-        icon: <Trash2 className="text-muted-foreground" />,
-        name: "Delete Project"
+        icon: Trash2,
+        name: "Delete Project",
+        actionIconClass: "text-muted-foreground"
     },
 ]
 
@@ -26,7 +30,7 @@ const RNormalSidebarItem = ({ item }: { item: any }) => {
                     <span>{item.name}</span>
                 </a>
             </SidebarMenuButton>
-            <RDropdown TriggerComponent={(
+            <RDropdown triggerComponent={(
                 <SidebarMenuAction showOnHover>
                     <MoreHorizontal />
                     <span className="sr-only">More</span>

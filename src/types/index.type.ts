@@ -1,3 +1,4 @@
+import { LucideIcon } from "lucide-react"
 import { ComponentType, ElementType, MouseEventHandler, ReactNode } from "react"
 
 export type RouteObject = {
@@ -11,7 +12,7 @@ export type RouteObject = {
 export type ActionItem = {
     name: string;
     onClick?: () => void;
-    icon?: ElementType;
+    icon?: LucideIcon;
     iconOnRight?: boolean;
     actionIconClass?: string;
     actionTextStyle?: string;
@@ -20,7 +21,7 @@ export type ActionItem = {
 }
 
 export type RDropdownProps = {
-    TriggerComponent?: ReactNode;
+    triggerComponent?: ReactNode;
     label?: string | null;
     actions?: ActionItem[];
     onPointerDownHandler?: MouseEventHandler;

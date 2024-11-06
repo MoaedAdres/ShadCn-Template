@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 
 const RDropdown: React.FC<RDropdownProps> = ({
-    TriggerComponent = null,
+    triggerComponent = null,
     label = null,
     actions = [],
     onPointerDownHandler,
@@ -33,8 +33,8 @@ const RDropdown: React.FC<RDropdownProps> = ({
                     onPointerDownHandler && onPointerDownHandler(e);
                 }}
             >
-                {TriggerComponent ? (
-                    TriggerComponent
+                {triggerComponent ? (
+                    triggerComponent
                 ) : (
                     <Button variant="ghost" className="h-fit w-fit p-0">
                         <span className="sr-only">Open menu</span>
@@ -62,11 +62,11 @@ const RDropdown: React.FC<RDropdownProps> = ({
                             {action.component ? (
                                 action.component
                             ) : (
-                                <RFlex className="items-center">
+                                <>
                                     {action.icon && !action.iconOnRight && <action.icon className={action.actionIconClass} />}
                                     <span className={`${action.actionTextStyle} cursor-pointer`}>{action.name}</span>
                                     {action.icon && action.iconOnRight && <action.icon className={action.actionIconClass} />}
-                                </RFlex>
+                                </>
                             )}
                         </DropdownMenuItem>
                         {action.addSeparator && <DropdownMenuSeparator />}
