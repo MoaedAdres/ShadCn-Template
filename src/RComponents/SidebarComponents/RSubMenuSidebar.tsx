@@ -4,7 +4,7 @@ import RSubMenuSidebarItem from '@/RComponents/SidebarComponents/RSubMenuSidebar
 const RSubMenuSidebar = ({ subItems }: { subItems: any }) => {
     return (
         <SidebarMenuSub>
-            {subItems.items?.map((subItem: any) => (
+            {subItems?.map((subItem: any) => (
                 <RSubMenuSidebarItem subItem={subItem} />
             ))}
         </SidebarMenuSub>)

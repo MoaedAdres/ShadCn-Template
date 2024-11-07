@@ -5,7 +5,6 @@ const RSidebarGroup = ({ groupLabel }: any) => {
     return (
         <SidebarGroup>
             <SidebarGroupLabel>Platform</SidebarGroupLabel>
-
         </SidebarGroup>)
 }
 

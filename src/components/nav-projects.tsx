@@ -1,9 +1,4 @@
-import {
-  Folder,
-  Forward,
-  Trash2,
-  type LucideIcon,
-} from "lucide-react"
+import { Folder, Forward, Trash2, type LucideIcon } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -11,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -20,36 +15,48 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
-import { DotsHorizontalIcon } from "@radix-ui/react-icons"
-import RDropdown from "@/RComponents/RDropDown"
-import RNormalSidebarItem from "@/RComponents/SidebarComponents/RNormalSidebarItem"
+} from "@/components/ui/sidebar";
+import { DotsHorizontalIcon } from "@radix-ui/react-icons";
+import RDropdown from "@/RComponents/RDropDown";
+import RNormalSidebarItem from "@/RComponents/SidebarComponents/RNormalSidebarItem";
+import RIconSideBarMenuItem from "@/RComponents/SidebarComponents/RIconSideBarMenuItem";
 
 export function NavProjects({
   projects,
 }: {
   projects: {
-    name: string
-    url: string
-    icon: LucideIcon
-  }[]
+    title: string;
+    url: string;
+    name: string;
+    icon: LucideIcon;
+    items: any;
+  }[];
 }) {
-  const { isMobile } = useSidebar()
-
+  const { open: isSidebarOpened, openMobile: isSidebarMobileOpened } =
+    useSidebar();
+  //className="group-data-[collapsible=icon]:hidden"
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+    <SidebarGroup >
       <SidebarGroupLabel>Projects</SidebarGroupLabel>
-      <SidebarMenu>
-        {projects.map((item, index) => (
-          <RNormalSidebarItem item={item} />
-        ))}
-        <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70">
-            <DotsHorizontalIcon className="text-sidebar-foreground/70" />
-            <span>More</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      </SidebarMenu>
-    </SidebarGroup >
-  )
+      {isSidebarOpened || isSidebarMobileOpened ? (
+        <SidebarMenu>
+          {projects.map((item, index) => (
+            <RNormalSidebarItem item={item} />
+          ))}
+          <SidebarMenuItem>
+            <SidebarMenuButton className="text-sidebar-foreground/70">
+              <DotsHorizontalIcon className="text-sidebar-foreground/70" />
+              <span>More</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      ) : (
+        <SidebarMenu>
+          {projects.map((item) => (
+            <RIconSideBarMenuItem item={item} />
+          ))}
+        </SidebarMenu>
+      )}
+    </SidebarGroup>
+  );
 }
