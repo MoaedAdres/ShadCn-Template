@@ -10,6 +10,7 @@ import RRoutes from "@/RComponents/RRoutes";
 import { dashboardRoutes } from "@/routes/DashboardRoutes";
 import { RootState } from "@/store/store";
 import { createContext, useEffect, useState, ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 // Define the shape of the theme context
@@ -19,17 +20,18 @@ export interface ThemeContextType {
 }
 
 // Create the ThemeContext with a default value of `undefined` initially
-export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined
+);
 
 export default function Dashboard() {
   const count = useSelector((state: RootState) => state.auth.id);
-
+  const { t } = useTranslation();
   // Define the theme state with type annotation
-  const [theme, setTheme] = useState<string>('dark'); // Default theme
-
+  const [theme, setTheme] = useState<string>("dark"); // Default theme
   useEffect(() => {
     // Apply saved theme from localStorage or use default
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setTheme(savedTheme);
       document.querySelector("html")?.setAttribute("data-theme", savedTheme);
@@ -40,7 +42,7 @@ export default function Dashboard() {
   const toggleTheme = (newTheme: string) => {
     setTheme(newTheme);
     document.querySelector("html")?.setAttribute("data-theme", newTheme);
-    localStorage.setItem('theme', newTheme); // Persist theme
+    localStorage.setItem("theme", newTheme); // Persist theme
   };
 
   return (
