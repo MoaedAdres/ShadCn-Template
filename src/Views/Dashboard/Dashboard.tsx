@@ -1,4 +1,3 @@
-import { AppSidebar } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -7,6 +6,8 @@ import {
 } from "@/components/ui/sidebar";
 import RBreadcrumb from "@/RComponents/RBreadcrumb";
 import RRoutes from "@/RComponents/RRoutes";
+import { sidebarContent } from "@/RComponents/SidebarComponents/data/sidebarContent";
+import RAppSidebar from "@/RComponents/SidebarComponents/RAppSidebar";
 import { dashboardRoutes } from "@/routes/DashboardRoutes";
 import { RootState } from "@/store/store";
 import { createContext, useEffect, useState, ReactNode } from "react";
@@ -47,7 +48,7 @@ export default function Dashboard() {
 
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <RAppSidebar contentData={sidebarContent} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">

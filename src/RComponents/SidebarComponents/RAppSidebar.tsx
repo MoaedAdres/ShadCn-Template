@@ -23,6 +23,8 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import { SidebarContentProps } from "@/types/index.type";
+import { renderSidebarItem } from "@/utils/renderSidebarItem";
 
 // This is sample data.
 const data = {
@@ -153,15 +155,25 @@ const data = {
     },
   ],
 };
-const RAppSidebar = (props: React.ComponentProps<typeof Sidebar>) => {
+const RAppSidebar = ({
+  contentData,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & {
+  contentData: SidebarContentProps[];
+}) => {
+
+  console.log("sidebar")
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" variant="sidebar" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        {contentData.map((content) => {
+          return renderSidebarItem(content.item);
+        })}
+        {/* <NavMain items={data.navMain} />
+        <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

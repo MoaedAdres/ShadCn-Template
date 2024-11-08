@@ -1,22 +1,20 @@
-import { Accordion, AccordionItem } from '@/components/ui/accordion'
-import { SidebarMenu } from '@/components/ui/sidebar'
+import { Accordion, AccordionItem } from "@/components/ui/accordion";
+import { SidebarMenu, useSidebar } from "@/components/ui/sidebar";
+import { SidebarItemType } from "@/constants/constant";
+import RIconSidebarMenu from "@/RComponents/SidebarComponents/RIconSidebarMenu";
+import { SidebarMenuProps } from "@/types/index.type";
+import { renderSidebarItem } from "@/utils/renderSidebarItem";
 
-const RCollapseSidebarMenu = ({ items }: { items: any }) => {
-    return (
-        <SidebarMenu>
-            <Accordion className="flex flex-col gap-1" type="multiple">
-                {items.map((item:any) => (
-                    <AccordionItem
-                        key={item.title}
-                        value={item.title}
-                        hasBorder={false}
-                    >
+const RCollapseSidebarMenu = ({ title, items, type }: SidebarMenuProps) => {
+  // const { open: isSidebarOpened, openMobile: isSidebarMobileOpened } =
+  //   useSidebar();
+  return (
+    <SidebarMenu>
+      <Accordion id="accordion" className="flex flex-col gap-1" type="multiple">
+        {items.map((item) => renderSidebarItem(item))}
+      </Accordion>
+    </SidebarMenu>
+  );
+};
 
-                    </AccordionItem>
-                ))}
-            </Accordion>
-        </SidebarMenu>
-    )
-}
-
-export default RCollapseSidebarMenu
+export default RCollapseSidebarMenu;

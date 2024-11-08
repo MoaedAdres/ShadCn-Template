@@ -1,17 +1,65 @@
-import { SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
-import RDropdown from '@/RComponents/RDropDown'
-import { LucideIcon } from 'lucide-react'
-import React from 'react'
+import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import { SidebarItemType } from "@/constants/constant";
+import RDropdown from "@/RComponents/RDropDown";
+import {
+  ActionItem,
+  SidebarItemProps,
+  SidebarMenuProps,
+} from "@/types/index.type";
+import { LucideIcon } from "lucide-react";
+import React from "react";
 
-const RIconSideBarMenuItem = ({ item }: { item: { title: string, icon: LucideIcon, items: any } }) => {
-    return (
-        <SidebarMenuItem>
-            <RDropdown triggerComponent={((<SidebarMenuButton tooltip={item.title} className='cursor-pointer' asChild>
-                <item.icon />
+const RIconSideBarMenuItem = ({
+  items,
+  Icon,
+  title,
+  type,
+  actions,
+}: SidebarItemProps) => {
+  console.log("icon items", type);
+  const getActions = (items: any) => {
+    const innerAtions: ActionItem[] = [];
+    // loop over the submenus inside the sidebar item
+    items.map((item: any) => {
+      // loop over the submenus subitems
+      item?.items?.map((subItem: any) => {
+        innerAtions.push({ name: subItem.title, Icon: subItem.Icon });
+        // subItem.subItem && getActions(subItem.subItem); // if the subitem has an submenu also
+      });
+    });
+    console.log("inner actions", innerAtions);
+    return innerAtions;
+  };
+  // to get every title for the subitem in every submenu that the item has
+  const finalActions =
+    type == SidebarItemType.COLLAPSE_ITEM
+      ? getActions(items)
+      : actions
+        ? actions
+        : [];
+  console.log("actions", actions);
+  return (
+    <SidebarMenuItem>
+      {finalActions?.length <= 0 ? (
+        <SidebarMenuButton tooltip={title} className="cursor-pointer" asChild>
+          {Icon && <Icon />}
+        </SidebarMenuButton>
+      ) : (
+        <RDropdown
+          triggerComponent={
+            <SidebarMenuButton
+              tooltip={title}
+              className="cursor-pointer"
+              asChild
+            >
+              {Icon && <Icon />}
             </SidebarMenuButton>
-            ))} actions={item.items?.map((subItem: any) => ({ name: subItem.title }))} />
-        </SidebarMenuItem>
-    )
-}
+          }
+          actions={finalActions}
+        />
+      )}
+    </SidebarMenuItem>
+  );
+};
 
-export default RIconSideBarMenuItem
+export default RIconSideBarMenuItem;

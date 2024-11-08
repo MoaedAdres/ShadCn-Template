@@ -18,10 +18,10 @@ export type RouteObject = {
 export type ActionItem = {
   name: string;
   onClick?: () => void;
-  icon?: LucideIcon;
+  Icon?: LucideIcon;
   iconOnRight?: boolean;
   actionIconClass?: string;
-  actionTextStyle?: string;
+  actionTextClass?: string;
   component?: ReactNode;
   addSeparator?: boolean;
 };
@@ -35,18 +35,49 @@ export type RDropdownProps = {
   contentClassName?: string;
 };
 
-export type SidebarItem = {
-  type: SidebarItemType;
-  title?: string;
-  icon?: LucideIcon;
-  items?: SidebarItem[];
+export type SidebarContentProps = {
+  type: SidebarItemType.CONTENT;
+  item: SidebarGroupProps | SidebarMenuProps;
 };
-export type SidebarGroupItem = {
+export type SidebarGroupProps = {
+  title: string;
+  type: SidebarItemType.GROUP;
+  items: SidebarMenuProps[];
+  Icon?: LucideIcon; // Add if `icon` is used in items
+};
+export type SidebarMenuProps = {
   title: string;
   type:
     | SidebarItemType.COLLAPSE_MENU
     | SidebarItemType.NORMAL_MENU
-    | SidebarItemType.ICOM_MENU;
-  items: [];
+    | SidebarItemType.ICON_MENU;
+  items: SidebarItemProps[];
 };
-export type SidebarMenuItem = {};
+export type SidebarItemProps = {
+  title: string;
+  type:
+    | SidebarItemType.COLLAPSE_ITEM
+    | SidebarItemType.NORMAL_ITEM
+    | SidebarItemType.ICON_ITEM;
+  items?: SidebarSubMenuProps[];
+  Icon?: LucideIcon; // Add if `icon` is used in items
+  actions?: ActionItem[];
+};
+export type SidebarSubMenuProps = {
+  title: string;
+  type: SidebarItemType.SUB_MENU;
+  items: SidebarSubMenuItemProps[];
+};
+export type SidebarSubMenuItemProps = {
+  title: string;
+  type: SidebarItemType.SUB_ITEM;
+  Icon?: LucideIcon; // Add if `icon` is used in items
+  actions?: ActionItem[];
+};
+
+export type AllSidebarItemTypes =
+  | SidebarGroupProps
+  | SidebarMenuProps
+  | SidebarItemProps
+  | SidebarSubMenuProps
+  | SidebarSubMenuItemProps;

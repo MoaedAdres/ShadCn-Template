@@ -1,28 +1,33 @@
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import { SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
-import RSubMenuSidebar from '@/RComponents/SidebarComponents/RSubMenuSidebar'
+import {
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import { SidebarItemProps } from "@/types/index.type";
+import { renderSidebarItem } from "@/utils/renderSidebarItem";
 
-const RCollapseSidebarItem = ({ item }: any) => {
-    return (
-        <AccordionItem
-            key={item.title}
-            value={item.title}
-            hasBorder={false}
+const RCollapseSidebarItem = ({ items, title, Icon }: SidebarItemProps) => {
+  return (
+    <AccordionItem id="accordion item" key={title} value={title} hasBorder={false}>
+      <SidebarMenuItem>
+        <AccordionTrigger
+          id="trigger"
+          className="p-0 font-normal hover:no-underline"
         >
-            <SidebarMenuItem>
-                <SidebarMenuButton tooltip={item.title}>
-                    <AccordionTrigger className="p-0 font-normal hover:no-underline">
-                        {item.icon && <item.icon />}
-                        <span>{item.title}</span>
-                    </AccordionTrigger>
-                </SidebarMenuButton>
-                <AccordionContent>
-                    <RSubMenuSidebar subItems={item.items} />
-                </AccordionContent>
-            </SidebarMenuItem>
-        </AccordionItem>
+          <SidebarMenuButton id="butttton" tooltip={title}>
+            {Icon && <Icon />}
+            <span>{title}</span>
+          </SidebarMenuButton>
+        </AccordionTrigger>
+        <AccordionContent>
+          {items?.map((item) => {
+            return renderSidebarItem(item);
+          })}
+        </AccordionContent>
+      </SidebarMenuItem>
+    </AccordionItem>
+  );
+};
 
-    )
-}
-
-export default RCollapseSidebarItem
+export default RCollapseSidebarItem;

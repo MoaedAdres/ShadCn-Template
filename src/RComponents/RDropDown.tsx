@@ -63,9 +63,9 @@ const RDropdown: React.FC<RDropdownProps> = ({
                                 action.component
                             ) : (
                                 <>
-                                    {action.icon && !action.iconOnRight && <action.icon className={action.actionIconClass} />}
-                                    <span className={`${action.actionTextStyle} cursor-pointer`}>{action.name}</span>
-                                    {action.icon && action.iconOnRight && <action.icon className={action.actionIconClass} />}
+                                    {action.Icon && !action.iconOnRight && <action.Icon className={action.actionIconClass} />}
+                                    <span className={`${action.actionTextClass} cursor-pointer`}>{action.name}</span>
+                                    {action.Icon && action.iconOnRight && <action.Icon className={action.actionIconClass} />}
                                 </>
                             )}
                         </DropdownMenuItem>
