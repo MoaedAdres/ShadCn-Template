@@ -2,7 +2,6 @@ import { SidebarItemType } from "@/constants/constant";
 import { LucideIcon } from "lucide-react";
 import {
   ComponentType,
-  ElementType,
   MouseEventHandler,
   ReactNode,
 } from "react";

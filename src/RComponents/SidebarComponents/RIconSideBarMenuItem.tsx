@@ -1,13 +1,7 @@
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { SidebarItemType } from "@/constants/constant";
 import RDropdown from "@/RComponents/RDropDown";
-import {
-  ActionItem,
-  SidebarItemProps,
-  SidebarMenuProps,
-} from "@/types/index.type";
-import { LucideIcon } from "lucide-react";
-import React from "react";
+import { ActionItem, SidebarItemProps } from "@/types/index.type";
 import { NavLink } from "react-router-dom";
 
 const RIconSideBarMenuItem = ({
@@ -43,7 +37,7 @@ const RIconSideBarMenuItem = ({
   return (
     <SidebarMenuItem>
       {finalActions?.length <= 0 ? (
-        <SidebarMenuButton  tooltip={title} className="cursor-pointer" asChild>
+        <SidebarMenuButton tooltip={title} className="cursor-pointer" asChild>
           {path ? (
             <NavLink to={path} className="w-full px-2">
               {Icon && <Icon />}

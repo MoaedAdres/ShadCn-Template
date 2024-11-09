@@ -8,7 +8,6 @@ import { NavLink } from "react-router-dom";
 
 const RSubMenuSidebarItem = ({
   title,
-  type,
   Icon,
   path,
 }: SidebarSubMenuItemProps) => {

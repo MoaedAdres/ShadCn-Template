@@ -12,8 +12,6 @@ import {
   SquareTerminal,
 } from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
 import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import {
@@ -161,8 +159,7 @@ const RAppSidebar = ({
 }: React.ComponentProps<typeof Sidebar> & {
   contentData: SidebarContentProps[];
 }) => {
-
-  console.log("sidebar")
+  console.log("sidebar");
   return (
     <Sidebar collapsible="icon" variant="sidebar" {...props}>
       <SidebarHeader>

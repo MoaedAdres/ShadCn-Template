@@ -4,16 +4,14 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import RDropdown from "@/RComponents/RDropDown";
-import { ActionItem, SidebarItemProps } from "@/types/index.type";
-import { Folder, Forward, MoreHorizontal, Trash2 } from "lucide-react";
+import { SidebarItemProps } from "@/types/index.type";
+import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const RNormalSidebarItem = ({
-  items,
   Icon,
   title,
-  type,
   path,
   actions,
 }: SidebarItemProps) => {
