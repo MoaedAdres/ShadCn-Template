@@ -7,6 +7,7 @@ import RDropdown from "@/RComponents/RDropDown";
 import { SidebarItemProps } from "@/types/index.type";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 const RNormalSidebarItem = ({
@@ -16,6 +17,7 @@ const RNormalSidebarItem = ({
   actions,
 }: SidebarItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   return (
     <SidebarMenuItem key={title}>
@@ -29,13 +31,13 @@ const RNormalSidebarItem = ({
         >
           <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
             {Icon && <Icon />}
-            <span>{title}</span>
+            <span>{t(title)}</span>
           </SidebarMenuButton>
         </NavLink>
       ) : (
         <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
           {Icon && <Icon />}
-          <span>{title}</span>
+          <span>{t(title)}</span>
         </SidebarMenuButton>
       )}
       {actions?.length && (

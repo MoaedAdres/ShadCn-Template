@@ -7,7 +7,7 @@ import {
 import RBreadcrumb from "@/RComponents/RBreadcrumb";
 import RRoutes from "@/RComponents/RRoutes";
 import { sidebarContent } from "@/RComponents/SidebarComponents/data/sidebarContent";
-import RAppSidebar from "@/RComponents/SidebarComponents/RAppSidebar";
+import RAppSidebar from "@/Layouts/RAppSidebar";
 import { dashboardRoutes } from "@/routes/DashboardRoutes";
 import { RootState } from "@/store/store";
 import { createContext, useEffect, useState, ReactNode } from "react";

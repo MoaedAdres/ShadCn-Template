@@ -7,6 +7,7 @@ import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { SidebarItemProps } from "@/types/index.type";
 import { renderSidebarItem } from "@/utils/renderSidebarItem";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 const RCollapseSidebarItem = ({
@@ -16,6 +17,7 @@ const RCollapseSidebarItem = ({
   path,
 }: SidebarItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   return (
     <AccordionItem
@@ -39,13 +41,13 @@ const RCollapseSidebarItem = ({
             >
               <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
                 {Icon && <Icon />}
-                <span>{title}</span>
+                <span>{t(title)}</span>
               </SidebarMenuButton>
             </NavLink>
           ) : (
             <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
               {Icon && <Icon />}
-              <span>{title}</span>
+              <span>{t(title)}</span>
             </SidebarMenuButton>
           )}
         </AccordionTrigger>
