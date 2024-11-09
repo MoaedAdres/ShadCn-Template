@@ -8,6 +8,7 @@ import {
 } from "@/types/index.type";
 import { LucideIcon } from "lucide-react";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const RIconSideBarMenuItem = ({
   items,
@@ -15,6 +16,7 @@ const RIconSideBarMenuItem = ({
   title,
   type,
   actions,
+  path,
 }: SidebarItemProps) => {
   console.log("icon items", type);
   const getActions = (items: any) => {
@@ -41,8 +43,14 @@ const RIconSideBarMenuItem = ({
   return (
     <SidebarMenuItem>
       {finalActions?.length <= 0 ? (
-        <SidebarMenuButton tooltip={title} className="cursor-pointer" asChild>
-          {Icon && <Icon />}
+        <SidebarMenuButton  tooltip={title} className="cursor-pointer" asChild>
+          {path ? (
+            <NavLink to={path} className="w-full px-2">
+              {Icon && <Icon />}
+            </NavLink>
+          ) : (
+            <div className="w-full px-2">{Icon && <Icon />}</div>
+          )}
         </SidebarMenuButton>
       ) : (
         <RDropdown

@@ -28,7 +28,11 @@ export const sidebarContent: SidebarContentProps[] = [
                   title: "sub1",
                   type: SidebarItemType.SUB_MENU,
                   items: [
-                    { type: SidebarItemType.SUB_ITEM, title: "History" },
+                    {
+                      type: SidebarItemType.SUB_ITEM,
+                      title: "History",
+                      path: "home",
+                    },
                     { type: SidebarItemType.SUB_ITEM, title: "Starred" },
                     { type: SidebarItemType.SUB_ITEM, title: "Settings" },
                   ],
@@ -104,6 +108,7 @@ export const sidebarContent: SidebarContentProps[] = [
               type: SidebarItemType.NORMAL_ITEM,
               title: "Playground",
               Icon: SquareTerminal,
+              path: "playground",
               actions: [
                 {
                   name: "delete",

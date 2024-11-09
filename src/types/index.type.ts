@@ -61,6 +61,7 @@ export type SidebarItemProps = {
     | SidebarItemType.ICON_ITEM;
   items?: SidebarSubMenuProps[];
   Icon?: LucideIcon; // Add if `icon` is used in items
+  path?: string;
   actions?: ActionItem[];
 };
 export type SidebarSubMenuProps = {
@@ -72,6 +73,7 @@ export type SidebarSubMenuItemProps = {
   title: string;
   type: SidebarItemType.SUB_ITEM;
   Icon?: LucideIcon; // Add if `icon` is used in items
+  path?: string;
   actions?: ActionItem[];
 };
 

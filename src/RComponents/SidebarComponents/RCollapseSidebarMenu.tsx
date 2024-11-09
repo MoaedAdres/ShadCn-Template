@@ -6,10 +6,11 @@ import { SidebarMenuProps } from "@/types/index.type";
 import { renderSidebarItem } from "@/utils/renderSidebarItem";
 
 const RCollapseSidebarMenu = ({ title, items, type }: SidebarMenuProps) => {
-  // const { open: isSidebarOpened, openMobile: isSidebarMobileOpened } =
-  //   useSidebar();
+  const { open: isSidebarOpened, openMobile: isSidebarMobileOpened } =
+    useSidebar();
+  const isOpen = isSidebarMobileOpened || isSidebarOpened;
   return (
-    <SidebarMenu>
+    <SidebarMenu className={isOpen ? "px-1" : ""}>
       <Accordion id="accordion" className="flex flex-col gap-1" type="multiple">
         {items.map((item) => renderSidebarItem(item))}
       </Accordion>
