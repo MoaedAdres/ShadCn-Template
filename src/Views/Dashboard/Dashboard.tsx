@@ -14,6 +14,7 @@ import { createContext, useEffect, useState, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import RNavbar from "@/Layouts/RNavbar";
+import BreadcrumbTracker from "@/utils/BreadCrumbTracker";
 
 // Define the shape of the theme context
 export interface ThemeContextType {
@@ -50,9 +51,13 @@ export default function Dashboard() {
     <SidebarProvider>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <RAppSidebar contentData={sidebarContent} />
+        <BreadcrumbTracker />
         <SidebarInset>
           <RNavbar />
-          <div id="content wrapper" className="p-2 mt-1 overflow-y-auto  max-h-[90vh]">
+          <div
+            id="content wrapper"
+            className="p-2 mt-1 overflow-y-auto  max-h-[90vh]"
+          >
             <RRoutes routes={dashboardRoutes} />
           </div>
         </SidebarInset>

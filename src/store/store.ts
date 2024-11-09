@@ -3,7 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Use localStorage
 import authReducer from '@/store/slices/authSlice';
 import counterReducer from '@/store/slices/counterSlice';
-
+import breadcrumbReducer from "@/store/slices/breadcrumbSlice"
 // Configure persist for the `user` slice only
 const persistConfig = {
     key: 'root',
@@ -15,6 +15,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: authReducer,
     counter: counterReducer, // This slice will not be persisted
+    breadcrumb:breadcrumbReducer
 });
 
 // Wrap the root reducer with persistReducer

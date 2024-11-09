@@ -1,12 +1,11 @@
-import { RouteObject } from "@/types/index.type";
+import { CustomRoute } from "@/types/index.type";
 import Dashboard from "@/Views/Dashboard/Dashboard";
 
-export const protectedRoutes: RouteObject[] = [
-    {
-        id: 1,
-        name: "dashboard",
-        path: "/dashboard",
-        exact: false,
-        Component: Dashboard
-    },
-]
+export const protectedRoutes: CustomRoute[] = [
+  {
+    path: "/dashboard",
+    exact: false,
+    breadcrumb: "Dashboard",
+    Component: Dashboard,
+  },
+];

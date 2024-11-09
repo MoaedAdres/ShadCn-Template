@@ -1,17 +1,11 @@
 import { SidebarItemType } from "@/constants/constant";
 import { LucideIcon } from "lucide-react";
-import {
-  ComponentType,
-  MouseEventHandler,
-  ReactNode,
-} from "react";
+import { ComponentType, MouseEventHandler, ReactNode } from "react";
+import { RouteObject } from "react-router-dom";
 
-export type RouteObject = {
-  id: number;
-  name: string;
-  path: string;
+export type CustomRoute = RouteObject & {
   exact: boolean;
-  Component: ComponentType;
+  breadcrumb?: string;
 };
 
 export type ActionItem = {
@@ -24,7 +18,7 @@ export type ActionItem = {
   component?: ReactNode;
   addSeparator?: boolean;
 };
-
+  
 export type RDropdownProps = {
   triggerComponent?: ReactNode;
   label?: string | null;

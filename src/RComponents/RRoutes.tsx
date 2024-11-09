@@ -1,7 +1,7 @@
-import { RouteObject } from "@/types/index.type";
+import { CustomRoute } from "@/types/index.type";
 import { Route, Routes } from "react-router-dom";
 
-const RRoutes = ({ routes }: { routes: RouteObject[] }) => {
+const RRoutes = ({ routes }: { routes: CustomRoute[] }) => {
   return (
     <Routes>
       {routes.map((route) => (
