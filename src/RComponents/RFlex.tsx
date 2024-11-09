@@ -2,7 +2,7 @@ import React, { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface RFlexProps extends React.HTMLAttributes<HTMLElement> {
-    children: ReactNode;
+    children?: ReactNode;
     className?: string;
     style?: CSSProperties;
     ref?: React.Ref<HTMLElement>;

@@ -6,3 +6,23 @@
 @import "./styles/themes/theme-blue-turquoise.css";
 @import "./styles/themes/theme-warm-peach-pink.css";
 @import "./styles/themes/theme-light-green.css";
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--scroll-bar));
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--scroll-bar-hover));
+}

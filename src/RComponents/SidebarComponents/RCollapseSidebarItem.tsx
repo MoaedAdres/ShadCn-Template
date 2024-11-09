@@ -33,10 +33,10 @@ const RCollapseSidebarItem = ({
         >
           {path ? (
             <NavLink
-              to={path}
+                to={path}
               className={({ isActive }) => {
                 setIsActive(isActive);
-                return "";
+                return "w-full";
               }}
             >
               <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
@@ -51,7 +51,7 @@ const RCollapseSidebarItem = ({
             </SidebarMenuButton>
           )}
         </AccordionTrigger>
-        <AccordionContent>
+        <AccordionContent className="pb-0">
           {items?.map((item) => {
             return renderSidebarItem(item);
           })}

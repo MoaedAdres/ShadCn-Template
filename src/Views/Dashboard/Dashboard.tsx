@@ -13,6 +13,7 @@ import { RootState } from "@/store/store";
 import { createContext, useEffect, useState, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import RNavbar from "@/Layouts/RNavbar";
 
 // Define the shape of the theme context
 export interface ThemeContextType {
@@ -27,7 +28,6 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(
 
 export default function Dashboard() {
   const count = useSelector((state: RootState) => state.auth.id);
-  const { t } = useTranslation();
   // Define the theme state with type annotation
   const [theme, setTheme] = useState<string>("dark"); // Default theme
   useEffect(() => {
@@ -48,19 +48,15 @@ export default function Dashboard() {
 
   return (
     <SidebarProvider>
-      <RAppSidebar contentData={sidebarContent} />
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <RBreadcrumb />
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <RAppSidebar contentData={sidebarContent} />
+        <SidebarInset>
+          <RNavbar />
+          <div id="content wrapper" className="p-2 mt-1 overflow-y-auto  max-h-[90vh]">
+            <RRoutes routes={dashboardRoutes} />
           </div>
-        </header>
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-          <RRoutes routes={dashboardRoutes} />
-        </ThemeContext.Provider>
-      </SidebarInset>
+        </SidebarInset>
+      </ThemeContext.Provider>
     </SidebarProvider>
   );
 }
