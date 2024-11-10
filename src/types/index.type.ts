@@ -8,6 +8,11 @@ export type CustomRoute = RouteObject & {
   breadcrumb?: string;
 };
 
+export type BreadCrumbObject={
+  path:string,
+  title:string,
+}
+
 export type ActionItem = {
   name: string;
   onClick?: () => void;

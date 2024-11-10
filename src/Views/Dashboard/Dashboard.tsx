@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import RNavbar from "@/Layouts/RNavbar";
 import BreadcrumbTracker from "@/utils/BreadCrumbTracker";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 
 // Define the shape of the theme context
 export interface ThemeContextType {
@@ -29,6 +30,10 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(
 
 export default function Dashboard() {
   const count = useSelector((state: RootState) => state.auth.id);
+  const location = useLocation();
+  const h = useParams();
+  console.log("location", location);
+  // const f = useNavigate();
   // Define the theme state with type annotation
   const [theme, setTheme] = useState<string>("dark"); // Default theme
   useEffect(() => {
@@ -51,14 +56,14 @@ export default function Dashboard() {
     <SidebarProvider>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <RAppSidebar contentData={sidebarContent} />
-        <BreadcrumbTracker />
+        {/* <BreadcrumbTracker /> */}
         <SidebarInset>
           <RNavbar />
           <div
             id="content wrapper"
             className="p-2 mt-1 overflow-y-auto  max-h-[90vh]"
           >
-            <RRoutes routes={dashboardRoutes} />
+            <Outlet />
           </div>
         </SidebarInset>
       </ThemeContext.Provider>
