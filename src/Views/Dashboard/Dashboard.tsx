@@ -1,17 +1,12 @@
-import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import RBreadcrumb from "@/RComponents/RBreadcrumb";
-import RRoutes from "@/RComponents/RRoutes";
 import { sidebarContent } from "@/RComponents/SidebarComponents/data/sidebarContent";
 import RAppSidebar from "@/Layouts/RAppSidebar";
-import { dashboardRoutes } from "@/routes/DashboardRoutes";
 import { RootState } from "@/store/store";
 import { createContext, useEffect, useState, ReactNode } from "react";
-import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import RNavbar from "@/Layouts/RNavbar";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";

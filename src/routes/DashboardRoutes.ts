@@ -3,7 +3,7 @@ import Home from "@/Views/Dashboard/Home";
 
 export const dashboardRoutes: CustomRoute[] = [
   {
-    path: "home/:id",
+    path: "home",
     exact: false,
     breadcrumb: "Home",
     Component: Home,
