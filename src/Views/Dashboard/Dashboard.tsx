@@ -14,7 +14,6 @@ import { createContext, useEffect, useState, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import RNavbar from "@/Layouts/RNavbar";
-import BreadcrumbTracker from "@/utils/BreadCrumbTracker";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 
 // Define the shape of the theme context
