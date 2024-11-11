@@ -8,22 +8,22 @@ export type CustomRoute = RouteObject & {
   breadcrumb?: string;
 };
 
-export type BreadCrumbObject={
-  path:string,
-  title:string,
-}
+export type BreadCrumbObject = {
+  path: string;
+  title: string;
+};
 
 export type ActionItem = {
   name: string;
   onClick?: () => void;
-  Icon?: LucideIcon;
+  Icon?: any;
   iconOnRight?: boolean;
   actionIconClass?: string;
   actionTextClass?: string;
   component?: ReactNode;
   addSeparator?: boolean;
 };
-  
+
 export type RDropdownProps = {
   triggerComponent?: ReactNode;
   label?: string | null;
@@ -31,6 +31,8 @@ export type RDropdownProps = {
   onPointerDownHandler?: MouseEventHandler;
   itemClassName?: string;
   contentClassName?: string;
+  side?: "bottom" | "right" | "top" | "left";
+  align?: "center" | "end" | "start";
 };
 
 export type SidebarContentProps = {

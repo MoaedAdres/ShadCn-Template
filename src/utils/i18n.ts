@@ -4,13 +4,14 @@ import { initReactI18next } from "react-i18next";
 // Translation resources
 import enTranslation from "@/assets/translations/en/en-translation.json";
 import arTranslation from "@/assets/translations/ar/ar-translation.json";
-
+import dnTranslation from "@/assets/translations/dn/dn-translation.json";
 i18n
   .use(initReactI18next) // Integrate with React
   .init({
     resources: {
       en: { translation: enTranslation },
       ar: { translation: arTranslation },
+      dn: { translation: dnTranslation },
     },
     lng: "en", // Default language
     fallbackLng: "en", // Fallback language if key is missing

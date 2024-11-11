@@ -29,7 +29,7 @@ export default function Dashboard() {
   console.log("location", location);
   // const f = useNavigate();
   // Define the theme state with type annotation
-  const [theme, setTheme] = useState<string>("dark"); // Default theme
+  const [theme, setTheme] = useState<string>(""); // Default theme
   useEffect(() => {
     // Apply saved theme from localStorage or use default
     const savedTheme = localStorage.getItem("theme");
