@@ -22,6 +22,7 @@ export type ActionItem = {
   actionTextClass?: string;
   component?: ReactNode;
   addSeparator?: boolean;
+  extraValue?: any;
 };
 
 export type RDropdownProps = {

@@ -10,22 +10,7 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 const RNavbar = () => {
   const themeContext = useContext(ThemeContext);
-  const LangElement = ({
-    title,
-    img,
-    className,
-  }: {
-    title: string;
-    img: any;
-    className?: string;
-  }) => {
-    return (
-      <>
-        <img src={img} className="w-3 h-3 opacity-85" />
-        <span>{title}</span>
-      </>
-    );
-  };
+  
   return (
     <header
       id="header"
@@ -46,10 +31,7 @@ const RNavbar = () => {
           }
           side="bottom"
           align="center"
-          actions={languages.map((lang) => ({
-            ...lang,
-            component: <LangElement title={lang.name} img={lang.icon} />,
-          }))}
+          actions={languages}
           contentClassName="min-w-fit w-max"
         />
         {themeContext?.theme == "dark" ? (
