@@ -7,11 +7,13 @@ export const generateBreadcrumbObjects = (
 ): BreadCrumbObject[] => {
   // Extract path and query parameters
   const pathNameArray = location.pathname.slice(1).split("/");
-  const queryParamValues = location.search
-    .slice(1)
-    .split("&")
-    .map((item) => item.split("=")[1]);
-
+  const queryParamValues =
+    location.search != ""
+      ? location.search
+          .slice(1)
+          .split("&")
+          .map((item) => item.split("=")[1])
+      : [];
   // Clone pathParams to safely modify it
   const remainingPathParams = { ...pathParams };
 
@@ -21,10 +23,16 @@ export const generateBreadcrumbObjects = (
     const path = "/" + pathNameArray.slice(0, index + 1).join("/");
 
     // Find a matching path parameter key and index
-    const { key, queryIndex } = findPathParamKeyIndex(pathSegment, remainingPathParams);
+    const { key, queryIndex } = findPathParamKeyIndex(
+      pathSegment,
+      remainingPathParams
+    );
 
     // Set title based on either the path segment or query parameter value
-    const title = queryIndex >= 0 ? queryParamValues[queryIndex] : pathSegment;
+    const title =
+      queryIndex >= 0
+        ? (queryParamValues[queryIndex] ?? pathSegment)
+        : pathSegment;
 
     // Remove the matched key from remainingPathParams if found
     if (key) delete remainingPathParams[key];

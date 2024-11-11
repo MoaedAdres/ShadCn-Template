@@ -184,6 +184,7 @@ export const sidebarContent: SidebarContentProps[] = [
           type: SidebarItemType.COLLAPSE_ITEM,
           title: "Playground",
           Icon: SquareTerminal,
+          // path: "home",
           items: [
             {
               title: "sub1",

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { generateBreadcrumbObjects } from "@/utils/generateBreadcrumbObjects";
 import { capitalizeFirstLetter } from "@/utils/helperFunctions";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const RBreadcrumb = () => {
   const location = useLocation();
@@ -21,9 +21,9 @@ const RBreadcrumb = () => {
           index != breadcrumbObjects.length - 1 ? (
             <>
               <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href={breadcrumbItem.path}>
+                <Link to={breadcrumbItem.path}>
                   {capitalizeFirstLetter(breadcrumbItem.title)}
-                </BreadcrumbLink>
+                </Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
             </>
