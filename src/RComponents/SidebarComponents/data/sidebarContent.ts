@@ -21,6 +21,7 @@ export const sidebarContent: SidebarContentProps[] = [
           items: [
             {
               type: SidebarItemType.COLLAPSE_ITEM,
+              childPaths: ["dashboard/home", "dashboard/models"],
               title: "Playground",
               Icon: SquareTerminal,
               path: "home",

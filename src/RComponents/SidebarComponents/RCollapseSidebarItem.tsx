@@ -8,17 +8,20 @@ import { SidebarItemProps } from "@/types/index.type";
 import { renderSidebarItem } from "@/utils/renderSidebarItem";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const RCollapseSidebarItem = ({
   items,
   title,
   Icon,
   path,
+  childPaths,
 }: SidebarItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const location = useLocation();
   const { t } = useTranslation();
-
+  const navigate = useNavigate();
+  console.log("logggg", location.pathname);
   return (
     <AccordionItem
       id="accordion item"
@@ -32,18 +35,16 @@ const RCollapseSidebarItem = ({
           className="p-0 font-normal hover:no-underline"
         >
           {path ? (
-            <NavLink
-                to={path}
-              className={({ isActive }) => {
-                setIsActive(isActive);
-                return "w-full";
-              }}
+            <SidebarMenuButton
+              className="cursor-pointer"
+              isActive={childPaths?.some((childPath) =>
+                location.pathname.includes(childPath)
+              )}
+              onClick={() => navigate(path, { viewTransition: true })}
             >
-              <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
-                {Icon && <Icon />}
-                <span>{t(title)}</span>
-              </SidebarMenuButton>
-            </NavLink>
+              {Icon && <Icon />}
+              <span>{t(title)}</span>
+            </SidebarMenuButton>
           ) : (
             <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
               {Icon && <Icon />}
