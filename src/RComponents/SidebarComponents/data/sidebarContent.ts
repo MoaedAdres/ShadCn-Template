@@ -21,10 +21,10 @@ export const sidebarContent: SidebarContentProps[] = [
           items: [
             {
               type: SidebarItemType.COLLAPSE_ITEM,
-              childPaths: ["dashboard/home", "dashboard/models"],
-              title: "Playground",
+              childPaths: ["dashboard/users", "dashboard/models"],
+              title: "Users",
               Icon: SquareTerminal,
-              path: "home",
+              path: "users",
               items: [
                 {
                   title: "sub1",
@@ -33,7 +33,7 @@ export const sidebarContent: SidebarContentProps[] = [
                     {
                       type: SidebarItemType.SUB_ITEM,
                       title: "History",
-                      path: "home",
+                      path: "users",
                     },
                     { type: SidebarItemType.SUB_ITEM, title: "Starred" },
                     { type: SidebarItemType.SUB_ITEM, title: "Settings" },

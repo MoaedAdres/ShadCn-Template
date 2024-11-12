@@ -5,7 +5,19 @@ import { protectedRoutes } from "@/routes/ProtectedRoutes";
 import RedirectRoute from "@/utils/RedirectRoute";
 import Dashboard from "@/Views/Dashboard/Dashboard";
 import { dashboardRoutes } from "@/routes/DashboardRoutes";
+import { CustomRoute } from "@/types/index.type";
 const App = () => {
+  const generateRoutes = (routes: CustomRoute[]) => {
+    return routes.map((route) => (
+      <Route
+        key={route.path}
+        path={`${route.path}${route.exact ? "" : "/*"}`}
+        Component={route.Component}
+      >
+        {route.routes && generateRoutes(route.routes)}
+      </Route>
+    ));
+  };
   return (
     <Router>
       <Routes>
@@ -26,13 +38,7 @@ const App = () => {
               />
             ))}
             <Route key={"Dashboard"} path="/dashboard" element={<Dashboard />}>
-              {dashboardRoutes?.map((route) => (
-                <Route
-                  key={route.path}
-                  path={`${route.path}${route.exact ? "" : "/*"}`}
-                  Component={route.Component}
-                />
-              ))}
+              {generateRoutes(dashboardRoutes)}
             </Route>
           </>
         </Route>

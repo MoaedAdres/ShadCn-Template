@@ -7,13 +7,12 @@ export const generateBreadcrumbObjects = (
 ): BreadCrumbObject[] => {
   // Extract path and query parameters
   const pathNameArray = location.pathname.slice(1).split("/");
-  const queryParamValues =
-    location.search != ""
-      ? location.search
-          .slice(1)
-          .split("&")
-          .map((item) => item.split("=")[1])
-      : [];
+  const params = new URLSearchParams(location.search);
+  const queryObject: { [key: string]: string } = {};
+
+  params.forEach((value, key) => {
+    queryObject[key] = value;
+  });
   // Clone pathParams to safely modify it
   const remainingPathParams = { ...pathParams };
 
@@ -23,16 +22,10 @@ export const generateBreadcrumbObjects = (
     const path = "/" + pathNameArray.slice(0, index + 1).join("/");
 
     // Find a matching path parameter key and index
-    const { key, queryIndex } = findPathParamKeyIndex(
-      pathSegment,
-      remainingPathParams
-    );
+    const { key } = checkIfThePathnameIsParam(pathSegment, remainingPathParams);
 
     // Set title based on either the path segment or query parameter value
-    const title =
-      queryIndex >= 0
-        ? (queryParamValues[queryIndex] ?? pathSegment)
-        : pathSegment;
+    const title = key ? (queryObject[key] ?? pathSegment) : pathSegment;
 
     // Remove the matched key from remainingPathParams if found
     if (key) delete remainingPathParams[key];
@@ -42,14 +35,14 @@ export const generateBreadcrumbObjects = (
 
   console.log("breadcrumb: Path segments:", pathNameArray);
   console.log("breadcrumb: Path parameters:", pathParams);
-  console.log("breadcrumb: Query parameter values:", queryParamValues);
-  console.log("breadcrumb: Breadcrumb objects:", breadcrumbObjects);
+  console.log("breadcrumb: Query parameter values:", queryObject);
+  // console.log("breadcrumb: Breadcrumb objects:", breadcrumbObjects);
 
   return breadcrumbObjects;
 };
 
 // Helper function to find the path parameter key and its index if it matches the given path segment
-const findPathParamKeyIndex = (pathSegment: string, pathParams: Params) => {
+const checkIfThePathnameIsParam = (pathSegment: string, pathParams: Params) => {
   const entries = Object.entries(pathParams);
   const index = entries.findIndex(([_, value]) => value === pathSegment);
   const key = entries[index]?.[0];

@@ -4,8 +4,9 @@ import { ComponentType, MouseEventHandler, ReactNode } from "react";
 import { RouteObject } from "react-router-dom";
 
 export type CustomRoute = RouteObject & {
-  exact: boolean;
+  exact?: boolean;
   breadcrumb?: string;
+  routes?: CustomRoute[];
 };
 
 export type BreadCrumbObject = {

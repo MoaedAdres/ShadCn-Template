@@ -27,6 +27,7 @@ export default function Dashboard() {
   const location = useLocation();
   const h = useParams();
   console.log("location", location);
+  console.log("location", h);
   // const f = useNavigate();
   // Define the theme state with type annotation
   const [theme, setTheme] = useState<string>(""); // Default theme
