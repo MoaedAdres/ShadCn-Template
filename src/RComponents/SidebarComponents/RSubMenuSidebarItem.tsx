@@ -5,13 +5,19 @@ import {
 import { SidebarSubMenuItemProps } from "@/types/index.type";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const RSubMenuSidebarItem = ({
   title,
   Icon,
   path,
+  childPaths,
 }: SidebarSubMenuItemProps) => {
+  const location = useLocation();
+
+  const childPathActive =
+    childPaths?.some((childPath) => location.pathname.includes(childPath)) ??
+    false;  
   const [isActive, setIsActive] = useState<boolean>(false);
   const { t } = useTranslation();
   console.log("isActiveeee", isActive);

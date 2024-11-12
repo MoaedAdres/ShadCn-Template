@@ -8,14 +8,17 @@ import { SidebarItemProps } from "@/types/index.type";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const RNormalSidebarItem = ({
   Icon,
   title,
   path,
   actions,
+  childPaths,
 }: SidebarItemProps) => {
+  const location = useLocation();
+
   const [isActive, setIsActive] = useState<boolean>(false);
   const { t } = useTranslation();
 

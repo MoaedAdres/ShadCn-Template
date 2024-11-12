@@ -17,8 +17,11 @@ const RCollapseSidebarItem = ({
   path,
   childPaths,
 }: SidebarItemProps) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
   const location = useLocation();
+  const childPathActive =
+    childPaths?.some((childPath) => location.pathname.includes(childPath)) ??
+    false;
+  const [isActive, setIsActive] = useState<boolean>(childPathActive);
   const { t } = useTranslation();
   const navigate = useNavigate();
   console.log("logggg", location.pathname);
@@ -37,9 +40,7 @@ const RCollapseSidebarItem = ({
           {path ? (
             <SidebarMenuButton
               className="cursor-pointer"
-              isActive={childPaths?.some((childPath) =>
-                location.pathname.includes(childPath)
-              )}
+              isActive={childPathActive}
               onClick={() => navigate(path, { viewTransition: true })}
             >
               {Icon && <Icon />}
@@ -52,7 +53,7 @@ const RCollapseSidebarItem = ({
             </SidebarMenuButton>
           )}
         </AccordionTrigger>
-        <AccordionContent className="pb-0">
+        <AccordionContent className="pb-0" containerClassName="p-1">
           {items?.map((item) => {
             return renderSidebarItem(item);
           })}

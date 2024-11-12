@@ -8,6 +8,27 @@ export const dashboardRoutes: CustomRoute[] = [
     exact: false,
     breadcrumb: "Users",
     Component: Home,
-    routes: [{ path: ":userId", Component: Test }],
+    // routes: [{ path: ":userId", Component: Test }],
+  },
+  {
+    path: "roles",
+    exact: false,
+    breadcrumb: "Rloles",
+    Component: Home,
+    // routes: [{ path: ":userId", Component: Test }],
+  },
+  {
+    path: "roles/create",
+    exact: false,
+    breadcrumb: "Create",
+    Component: Home,
+    // routes: [{ path: ":userId", Component: Test }],
+  },
+  {
+    path: "user-types",
+    exact: false,
+    breadcrumb: "User-Types",
+    Component: Home,
+    // routes: [{ path: ":userId", Component: Test }],
   },
 ];

@@ -13,7 +13,7 @@ export const sidebarContent: SidebarContentProps[] = [
     type: SidebarItemType.CONTENT,
     item: {
       type: SidebarItemType.GROUP,
-      title: "Platform",
+      title: "Global",
       items: [
         {
           type: SidebarItemType.COLLAPSE_MENU,
@@ -21,7 +21,11 @@ export const sidebarContent: SidebarContentProps[] = [
           items: [
             {
               type: SidebarItemType.COLLAPSE_ITEM,
-              childPaths: ["dashboard/users", "dashboard/models"],
+              childPaths: [
+                "dashboard/users",
+                "dashboard/user-types",
+                "dashboard/roles",
+              ],
               title: "Users",
               Icon: SquareTerminal,
               path: "users",
@@ -32,11 +36,19 @@ export const sidebarContent: SidebarContentProps[] = [
                   items: [
                     {
                       type: SidebarItemType.SUB_ITEM,
-                      title: "History",
+                      title: "Users",
                       path: "users",
                     },
-                    { type: SidebarItemType.SUB_ITEM, title: "Starred" },
-                    { type: SidebarItemType.SUB_ITEM, title: "Settings" },
+                    {
+                      type: SidebarItemType.SUB_ITEM,
+                      title: "Roles",
+                      path: "roles",
+                    },
+                    {
+                      type: SidebarItemType.SUB_ITEM,
+                      title: "User Types",
+                      path: "user-types",
+                    },
                   ],
                 },
               ],
