@@ -6,14 +6,16 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { generateBreadcrumbObjects } from "@/utils/generateBreadcrumbObjects";
+import { generateBreadcrumbFromLocation } from "@/utils/generateBreadcrumbObjects";
 import { capitalizeFirstLetter } from "@/utils/helperFunctions";
+import { useTranslation } from "react-i18next";
 import { Link, useLocation, useParams } from "react-router-dom";
 
 const RBreadcrumb = () => {
   const location = useLocation();
   const params = useParams();
-  const breadcrumbObjects = generateBreadcrumbObjects(location, params);
+  const { t } = useTranslation();
+  const breadcrumbObjects = generateBreadcrumbFromLocation(location, params);
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -22,7 +24,7 @@ const RBreadcrumb = () => {
             <>
               <BreadcrumbItem className="hidden md:block">
                 <Link to={breadcrumbItem.path}>
-                  {capitalizeFirstLetter(breadcrumbItem.title)}
+                  {t(capitalizeFirstLetter(breadcrumbItem.title))}
                 </Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
@@ -30,7 +32,7 @@ const RBreadcrumb = () => {
           ) : (
             <BreadcrumbItem>
               <BreadcrumbPage>
-                {capitalizeFirstLetter(breadcrumbItem.title)}
+                {t(capitalizeFirstLetter(breadcrumbItem.title))}
               </BreadcrumbPage>
             </BreadcrumbItem>
           )

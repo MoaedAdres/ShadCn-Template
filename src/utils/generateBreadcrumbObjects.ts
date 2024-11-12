@@ -1,7 +1,7 @@
 import { BreadCrumbObject } from "@/types/index.type";
 import { Location, Params } from "react-router-dom";
 
-export const generateBreadcrumbObjects = (
+export const generateBreadcrumbFromLocation = (
   location: Location,
   pathParams: Params
 ): BreadCrumbObject[] => {

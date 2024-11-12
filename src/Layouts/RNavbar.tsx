@@ -6,11 +6,25 @@ import RFlex from "@/RComponents/RFlex";
 import { ThemeContext } from "@/Views/Dashboard/Dashboard";
 import { Separator } from "@radix-ui/react-separator";
 import { Globe, Languages, Moon, Sun } from "lucide-react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 const RNavbar = () => {
   const themeContext = useContext(ThemeContext);
-  
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("lang");
+    if (savedLanguage) {
+      i18n.changeLanguage(savedLanguage);
+      document.querySelector("html")?.setAttribute("lang", savedLanguage);
+    }
+  }, []);
+  const switchLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+    document.querySelector("html")?.setAttribute("lang", language);
+    localStorage.setItem("lang", language); // Persist theme
+  };
+
   return (
     <header
       id="header"
@@ -31,8 +45,11 @@ const RNavbar = () => {
           }
           side="bottom"
           align="center"
-          actions={languages}
           contentClassName="min-w-fit w-max"
+          actions={languages.map((language) => ({
+            ...language,
+            onClick: () => switchLanguage(language.extraValue),
+          }))}
         />
         {themeContext?.theme == "dark" ? (
           <Sun

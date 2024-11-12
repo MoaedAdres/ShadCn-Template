@@ -8,6 +8,7 @@ const Home = () => {
   console.log("mobile", theme);
   return (
     <>
+      this is users
       <Outlet />
     </>
   );
