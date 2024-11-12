@@ -62,7 +62,7 @@ const RIconSideBarMenuItem = ({
               return "";
             }}
           >
-            <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
+            <SidebarMenuButton tooltip={title} className="cursor-pointer" isActive={isActive}>
               {Icon && <Icon />}
               <span>{t(title)}</span>
             </SidebarMenuButton>
