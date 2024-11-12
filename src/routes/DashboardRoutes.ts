@@ -18,7 +18,7 @@ export const dashboardRoutes: CustomRoute[] = [
     // routes: [{ path: ":userId", Component: Test }],
   },
   {
-    path: "roles/create",
+    path: "roles/:id",
     exact: false,
     breadcrumb: "Create",
     Component: Home,
@@ -26,6 +26,13 @@ export const dashboardRoutes: CustomRoute[] = [
   },
   {
     path: "user-types",
+    exact: false,
+    breadcrumb: "User-Types",
+    Component: Home,
+    // routes: [{ path: ":userId", Component: Test }],
+  },
+  {
+    path: "models",
     exact: false,
     breadcrumb: "User-Types",
     Component: Home,

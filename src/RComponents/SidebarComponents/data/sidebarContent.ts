@@ -137,6 +137,7 @@ export const sidebarContent: SidebarContentProps[] = [
               type: SidebarItemType.NORMAL_ITEM,
               title: "Models",
               Icon: Bot,
+              path: "models",
               items: [
                 {
                   type: SidebarItemType.SUB_MENU,
