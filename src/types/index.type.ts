@@ -25,7 +25,10 @@ export type ActionItem = {
   addSeparator?: boolean;
   extraValue?: any;
 };
-
+export type CheckActionItem = ActionItem & {
+  checked: boolean;
+  onCheckedChange: (checked: boolean) => void;
+};
 export type RDropdownProps = {
   triggerComponent?: ReactNode;
   label?: string | null;
@@ -33,6 +36,19 @@ export type RDropdownProps = {
   onPointerDownHandler?: MouseEventHandler;
   itemClassName?: string;
   contentClassName?: string;
+  side?: "bottom" | "right" | "top" | "left";
+  align?: "center" | "end" | "start";
+};
+
+export type RCheckDropdownProps = {
+  triggerComponent?: React.ReactNode;
+  label?: string | React.ReactNode;
+  actions: { [key: string]: CheckActionItem };
+  setActions?: React.Dispatch<React.SetStateAction<any>>;
+  contentClassName?: string;
+  itemClassName?: string;
+  multiFilter?: boolean;
+  KeepActiveItemChecked?: boolean;
   side?: "bottom" | "right" | "top" | "left";
   align?: "center" | "end" | "start";
 };

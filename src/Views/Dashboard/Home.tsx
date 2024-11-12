@@ -4,8 +4,8 @@ import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const { isMobile } = useSidebar();
-  const { theme } = useTheme();
-  console.log("mobile", theme);
+  // const { theme } = useTheme();
+  // console.log("mobile", theme);
   return (
     <>
       this is users

@@ -10,7 +10,7 @@ i18n
   .init({
     resources: {
       en: { translation: enTranslation },
-      ar: { translation: arTranslation },
+      // ar: { translation: arTranslation },
       dn: { translation: dnTranslation },
     },
     lng: "en", // Default language

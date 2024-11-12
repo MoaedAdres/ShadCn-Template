@@ -32,7 +32,7 @@ export const dashboardRoutes: CustomRoute[] = [
     // routes: [{ path: ":userId", Component: Test }],
   },
   {
-    path: "models",
+    path: "models ",
     exact: false,
     breadcrumb: "User-Types",
     Component: Home,

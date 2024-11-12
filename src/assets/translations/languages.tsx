@@ -1,7 +1,6 @@
-import ukFlag from "@/assets/icons/uk-flag.png";
-import denmarkFlag from "@/assets/icons/denmark-flag.webp";
-import { ActionItem } from "@/types/index.type";
-const LangElement = ({
+import RFlex from "@/RComponents/RFlex";
+
+export const LangElement = ({
   title,
   img,
   className,
@@ -11,23 +10,9 @@ const LangElement = ({
   className?: string;
 }) => {
   return (
-    <>
+    <RFlex className="gap-1 items-center w-full">
       <img src={img} className="w-3 h-3 opacity-85" />
       <span>{title}</span>
-    </>
+    </RFlex>
   );
 };
-export const languages: ActionItem[] = [
-  {
-    name: "en",
-    Icon: ukFlag,
-    component: <LangElement title="en" img={ukFlag} />,
-    extraValue: "en",
-  },
-  {
-    name: "dn",
-    Icon: denmarkFlag,
-    component: <LangElement title="dn" img={denmarkFlag} />,
-    extraValue: "dn",
-  },
-];
