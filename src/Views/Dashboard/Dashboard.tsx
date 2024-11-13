@@ -1,15 +1,10 @@
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { sidebarContent } from "@/RComponents/SidebarComponents/data/sidebarContent";
 import RAppSidebar from "@/Layouts/RAppSidebar";
-import { RootState } from "@/store/store";
-import { createContext, useEffect, useState, ReactNode } from "react";
-import { useSelector } from "react-redux";
+import { createContext, useEffect, useState } from "react";
+// import { useSelector } from "react-redux";
 import RNavbar from "@/Layouts/RNavbar";
-import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 
 // Define the shape of the theme context
 export interface ThemeContextType {
@@ -23,7 +18,7 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(
 );
 
 export default function Dashboard() {
-  const count = useSelector((state: RootState) => state.auth.id);
+  // const count = useSelector((state: RootState) => state.auth.id);
   const location = useLocation();
   const h = useParams();
   console.log("location", location);

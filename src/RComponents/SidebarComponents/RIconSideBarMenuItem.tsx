@@ -2,10 +2,9 @@ import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { SidebarItemType } from "@/constants/constant";
 import RDropdown from "@/RComponents/RDropDown";
 import { ActionItem, SidebarItemProps } from "@/types/index.type";
-import { LucideIcon } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const RIconSideBarMenuItem = ({
   items,
@@ -62,7 +61,11 @@ const RIconSideBarMenuItem = ({
               return "";
             }}
           >
-            <SidebarMenuButton tooltip={title} className="cursor-pointer" isActive={isActive}>
+            <SidebarMenuButton
+              tooltip={title}
+              className="cursor-pointer"
+              isActive={isActive}
+            >
               {Icon && <Icon />}
               <span>{t(title)}</span>
             </SidebarMenuButton>
@@ -86,7 +89,7 @@ const RIconSideBarMenuItem = ({
           actions={finalActions.map((action) => ({
             ...action,
             onClick: () => {
-              navigate(action.extraValue?.path);
+              action.extraValue?.path && navigate(action.extraValue?.path);
             },
           }))}
         />

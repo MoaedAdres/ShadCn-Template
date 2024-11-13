@@ -1,9 +1,9 @@
-import { Accordion, AccordionItem } from "@/components/ui/accordion";
+import { Accordion } from "@/components/ui/accordion";
 import { SidebarMenu, useSidebar } from "@/components/ui/sidebar";
 import { SidebarMenuProps } from "@/types/index.type";
 import { renderSidebarItem } from "@/utils/renderSidebarItem";
 
-const RCollapseSidebarMenu = ({ title, items, type }: SidebarMenuProps) => {
+const RCollapseSidebarMenu = ({ items }: SidebarMenuProps) => {
   const { open: isSidebarOpened, openMobile: isSidebarMobileOpened } =
     useSidebar();
   const isOpen = isSidebarMobileOpened || isSidebarOpened;
