@@ -1,6 +1,7 @@
 import { SidebarItemType } from "@/constants/constant";
+import { ColumnDef } from "@tanstack/react-table";
 import { LucideIcon } from "lucide-react";
-import { ComponentType, MouseEventHandler, ReactNode } from "react";
+import { InputHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import { RouteObject } from "react-router-dom";
 
 export type CustomRoute = RouteObject & {
@@ -103,3 +104,97 @@ export type AllSidebarItemTypes =
   | SidebarItemProps
   | SidebarSubMenuProps
   | SidebarSubMenuItemProps;
+
+export type TableAction = {
+  inDropdown?: boolean;
+  hidden?: boolean;
+  name: string;
+  icon: string;
+  actionIconClass?: string;
+  needLoader?: boolean;
+  iconFn?: (info: any) => string;
+  onClick: (info: any) => void;
+  dialogTitle?: (info: any) => string;
+  dialogDescription?: (info: any) => string;
+  cancel?: string;
+  confirm?: string;
+  loading?: boolean;
+  confirmAction?: (info: any) => void;
+  disabled?: boolean;
+  headerItemsPosition?: string;
+  inDialog?: boolean;
+};
+export type RTableProps = {
+  Records: {
+    columns: ColumnDef<any>[];
+    data: any[];
+    actions?: TableAction[];
+    removeDropDownActions?: boolean;
+    triggerDropDownComponent?: (info: any) => React.ReactNode;
+    onPointerDownHandler?: (info: any) => void;
+    staticColumns?: boolean;
+    staticHeight?: string;
+  };
+  containerClassName?: string;
+  emptyData?: string | React.ReactNode;
+  callBack?: (table: any) => void;
+  finishedOperation?: string | null;
+  setFinishedOperation?: (value: string | null) => void;
+  loading?: boolean;
+};
+
+export type RTooltipProps = {
+  trigger?: ReactNode;
+  tooltipText?: string;
+  triggerClassName?: string;
+  tooltipBackground?: string;
+  delayDuration?: number;
+  side?: "top" | "bottom" | "left" | "right";
+};
+
+export type RAlertDialogProps = {
+  component?: ReactNode;
+  title?: string;
+  description?: string;
+  cancelText?: string;
+  cancelClassName?: string;
+  cancelAction?: () => void;
+  confirmText?: string;
+  confirmClassName?: string;
+  confirmAction: () => void;
+  loading?: boolean;
+  disabled?: boolean;
+  headerItemsPosition?: string;
+  disableTrigger?: boolean;
+};
+
+export type RNewButtonProps = {
+  className?: string;
+  textClassName?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  hidden?: boolean;
+  Icon?: LucideIcon;
+  text?: string;
+  type?: "button" | "submit" | "reset";
+  key?: React.Key;
+  id?: string;
+  iconRight?: boolean;
+  variant?:
+    | "default"
+    | "ghost"
+    | "link"
+    | "destructive"
+    | "outline"
+    | "secondary";
+  size: "default" | "sm" | "lg" | "icon";
+};
+
+
+export type RLoaderInputProps = InputHTMLAttributes<HTMLInputElement> & {
+	className?: string;
+	inputError?: boolean;
+	inputClassName?: string;
+	isLoading?: boolean;
+};
