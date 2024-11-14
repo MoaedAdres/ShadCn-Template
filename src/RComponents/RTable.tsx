@@ -22,12 +22,15 @@ import {
   ColumnFiltersState,
   VisibilityState,
   RowSelectionState,
+  HeaderContext,
+  CellContext,
 } from "@tanstack/react-table";
 import RDropdown from "@/RComponents/RDropDown";
 import RAlertDialog from "@/RComponents/RAlertDialog";
 import RTooltip from "@/RComponents/RTooltip";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RTableProps, TableAction } from "@/types/index.type";
+import { cn } from "@/lib/utils";
 
 interface ActionTypes {
   LOADING: string;
@@ -116,119 +119,129 @@ const RTable: React.FC<RTableProps> = ({
         : ("relative" as React.CSSProperties["position"]),
       minWidth: Records?.staticColumns ? column.getSize() : undefined,
       height: Records.staticHeight ? Records.staticHeight : undefined,
-    //   backgroundColor: "white",
+      //   backgroundColor: "white",
       zIndex: isPinned ? 10 : undefined,
     };
   };
 
-  const columns = Records.columns.concat(
-    Records?.actions && Records?.actions?.length > 0
-      ? {
-          id: "actions",
-          header: () => "",
-          cell: (info: any) => (
-            <div className="flex gap-3 items-center">
-              {Records.actions
-                ?.filter((action) => !action.inDropdown && !action.hidden)
-                .map((action, index) => {
-                  const iconComponent = (
-                    <RTooltip
-                      trigger={
-                        checkActionStatus(action, info.row.original) ===
-                        actionTypes.LOADING ? (
-                          <div>
-                            <i className="spinner-icon" />
-                          </div>
-                        ) : (
-                          <i
-                            key={index}
-                            className={`${action.icon} ${typeof action.iconFn === "function" ? action.iconFn(info) : ""} ${action.actionIconClass} cursor-pointer ${checkActionStatus(action, info.row.original) === actionTypes.DISABLED ? "disabled__link" : ""}`}
-                            aria-label={action.name ?? "default"}
-                            onClick={() => {
+  const columns: ColumnDef<any>[] = Records.columns?.map((columnInfo) => ({
+    id: columnInfo?.id ?? undefined,
+    accessorKey: columnInfo?.accessorKey ?? undefined,
+    header: (info: HeaderContext<any, any>) => columnInfo?.renderHeader(info),
+    cell: (info: CellContext<any, any>) => columnInfo?.renderCell(info),
+    size: columnInfo.size ? columnInfo?.size : undefined,
+  }));
+  Records?.actions &&
+    Records?.actions?.length > 0 &&
+    columns.push({
+      id: "actions",
+      header: () => <></>,
+      cell: (info: CellContext<any, any>) => (
+        <div className="flex gap-3 items-center">
+          {Records.actions
+            ?.filter((action) => !action.inDropdown && !action.hidden)
+            .map((action, index) => {
+              const iconComponent = (
+                <RTooltip
+                  triggerComponent={
+                    checkActionStatus(action, info.row.original) ===
+                    actionTypes.LOADING ? (
+                      <div>
+                        <i className="spinner-icon" />
+                      </div>
+                    ) : (
+                      action.Icon && (
+                        <action.Icon
+                          key={index}
+                          className={cn(
+                            "w-4 h-4",
+                            `${action.actionIconClass} cursor-pointer ${checkActionStatus(action, info.row.original) === actionTypes.DISABLED ? "disabled__link" : ""}`
+                          )}
+                          aria-label={action.name ?? "default"}
+                          onClick={() => {
+                            if (
+                              !action.inDialog &&
+                              checkActionStatus(action, info.row.original) !==
+                                actionTypes.DISABLED
+                            ) {
+                              action.onClick(info);
                               if (
-                                !action.inDialog &&
-                                checkActionStatus(action, info.row.original) !==
-                                  actionTypes.DISABLED
+                                action.needLoader &&
+                                checkActionStatus(action, info.row.original) ===
+                                  actionTypes.NONE
                               ) {
-                                action.onClick(info);
-                                if (
-                                  action.needLoader &&
-                                  checkActionStatus(
-                                    action,
-                                    info.row.original
-                                  ) === actionTypes.NONE
-                                ) {
-                                  addToActionLoading(action, info.row.original);
-                                }
+                                addToActionLoading(action, info.row.original);
                               }
-                            }}
-                          />
-                        )
-                      }
-                      tooltipText={action.name}
-                    />
-                  );
-                  return action.inDialog ? (
-                    <RAlertDialog
-                      key={index}
-                      component={iconComponent}
-                      disableTrigger={
-                        checkActionStatus(action, info.row.original) ===
-                          actionTypes.LOADING ||
-                        checkActionStatus(action, info.row.original) ===
-                          actionTypes.DISABLED
-                      }
-                      title={action.dialogTitle && action.dialogTitle(info)}
-                      description={
-                        action.dialogDescription &&
-                        action.dialogDescription(info)
-                      }
-                      cancelText={action.cancel}
-                      confirmText={action.confirm}
-                      loading={action.loading}
-                      confirmAction={() => {
-                        action.confirmAction && action.confirmAction(info);
-                        if (action.needLoader)
-                          addToActionLoading(action, info.row.original);
-                      }}
-                      disabled={action.disabled}
-                      headerItemsPosition={action.headerItemsPosition}
-                    />
-                  ) : (
-                    iconComponent
-                  );
-                })}
-              {!Records?.removeDropDownActions &&
-                Records.actions &&
-                Records.actions.some((action) => action.inDropdown) && (
-                  <RDropdown
-                    triggerComponent={
-                      Records.triggerDropDownComponent &&
-                      Records.triggerDropDownComponent(info)
-                    }
-                    onPointerDownHandler={() =>
-                      Records.onPointerDownHandler &&
-                      Records.onPointerDownHandler(info)
-                    }
-                    actions={Records.actions
-                      .filter((action) => action.inDropdown && !action.hidden)
-                      .map((action) => ({
-                        ...action,
-                        onClick: () => action.onClick(info),
-                      }))}
-                  />
-                )}
-            </div>
-          ),
-        }
-      : []
-  );
+                            }
+                          }}
+                        />
+                      )
+                    )
+                  }
+                  tooltipText={action.name}
+                />
+              );
+              return action.inDialog ? (
+                <RAlertDialog
+                  key={index}
+                  component={iconComponent}
+                  disableTrigger={
+                    checkActionStatus(action, info.row.original) ===
+                      actionTypes.LOADING ||
+                    checkActionStatus(action, info.row.original) ===
+                      actionTypes.DISABLED
+                  }
+                  title={action.dialogTitle && action.dialogTitle(info)}
+                  description={
+                    action.dialogDescription && action.dialogDescription(info)
+                  }
+                  cancelText={action.cancel}
+                  confirmText={action.confirm}
+                  loading={action.loading}
+                  confirmAction={() => {
+                    action.confirmAction && action.confirmAction(info);
+                    if (action.needLoader)
+                      addToActionLoading(action, info.row.original);
+                  }}
+                  disabled={action.disabled}
+                  headerItemsPosition={action.headerItemsPosition}
+                />
+              ) : (
+                iconComponent
+              );
+            })}
+          {!Records?.removeDropDownActions &&
+            Records.actions &&
+            Records.actions.some((action) => action.inDropdown) && (
+              <RDropdown
+                triggerComponent={
+                  Records.triggerDropDownComponent &&
+                  Records.triggerDropDownComponent(info)
+                }
+                onPointerDownHandler={() =>
+                  Records.onPointerDownHandler &&
+                  Records.onPointerDownHandler(info)
+                }
+                side={Records.dropDownSide ?? "bottom"}
+                align={Records.dropDownAlign ?? "end"}
+                contentClassName={Records.dropDownContentClassName}
+                actions={Records.actions
+                  .filter((action) => action.inDropdown && !action.hidden)
+                  .map((action) => ({
+                    ...action,
+                    onClick: () => action.onClick(info),
+                  }))}
+              />
+            )}
+        </div>
+      ),
+    });
 
   const data = Records.data ?? [];
 
   const table = useReactTable({
     data: data,
-    columns: columns as ColumnDef<any>[],
+    columns: columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -268,7 +281,7 @@ const RTable: React.FC<RTableProps> = ({
         </div>
       )}
       <Table>
-        <TableHeader>
+        <TableHeader className="bg-muted">
           {table.getHeaderGroups()?.map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers?.map((header) => (

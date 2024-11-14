@@ -7,9 +7,8 @@ import RDropdown from "@/RComponents/RDropDown";
 import { SidebarItemProps } from "@/types/index.type";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { NavLink, useLocation } from "react-router-dom";
-
+import { t } from "i18next";
 const RNormalSidebarItem = ({
   Icon,
   title,
@@ -20,7 +19,6 @@ const RNormalSidebarItem = ({
   const location = useLocation();
 
   const [isActive, setIsActive] = useState<boolean>(false);
-  const { t } = useTranslation();
 
   return (
     <SidebarMenuItem key={title}>

@@ -1,8 +1,8 @@
 import { Input } from "@/components/ui/input";
-import { RLoaderInputProps } from "@/types/index.type";
+import { RInputProps } from "@/types/index.type";
 import { Loader } from "lucide-react";
 
-const RLoaderInput: React.FC<RLoaderInputProps> = ({
+const RInput: React.FC<RInputProps> = ({
   className,
   inputClassName,
   isLoading,
@@ -13,11 +13,11 @@ const RLoaderInput: React.FC<RLoaderInputProps> = ({
     <div className={`relative ${className || ""}`}>
       <Input
         {...props}
-        className={`${inputError ? " outline-none shadow-[0px_0px_5px_0px_#dd0000]" : ""} ${inputClassName || ""}`}
+        className={`${inputError ? " shadow-[0px_0px_5px_0px_#dd0000] focus-visible:ring-0" : ""} ${inputClassName || ""}`}
       />
       {isLoading && <Loader className={`fa-sm right-3 top-1/2 absolute`} />}
     </div>
   );
 };
 
-export default RLoaderInput;
+export default RInput;

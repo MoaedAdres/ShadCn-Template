@@ -1,5 +1,5 @@
 import { SidebarItemType } from "@/constants/constant";
-import { ColumnDef } from "@tanstack/react-table";
+import { CellContext, HeaderContext } from "@tanstack/react-table";
 import { LucideIcon } from "lucide-react";
 import { InputHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import { RouteObject } from "react-router-dom";
@@ -109,11 +109,11 @@ export type TableAction = {
   inDropdown?: boolean;
   hidden?: boolean;
   name: string;
-  icon: string;
+  Icon?: LucideIcon;
   actionIconClass?: string;
   needLoader?: boolean;
   iconFn?: (info: any) => string;
-  onClick: (info: any) => void;
+  onClick: (info: CellContext<any, any>) => void;
   dialogTitle?: (info: any) => string;
   dialogDescription?: (info: any) => string;
   cancel?: string;
@@ -124,17 +124,30 @@ export type TableAction = {
   headerItemsPosition?: string;
   inDialog?: boolean;
 };
+export type CustomColumn = {
+  id: string;
+  accessorKey?: string;
+  renderHeader: (info: HeaderContext<any, any>) => ReactNode;
+  renderCell: (info: CellContext<any, any>) => ReactNode;
+  size?: number;
+};
+
+export type TableRecords = {
+  columns: CustomColumn[];
+  data: any[];
+  actions?: TableAction[];
+  removeDropDownActions?: boolean;
+  triggerDropDownComponent?: (info: any) => React.ReactNode;
+  dropDownSide?: "bottom" | "right" | "top" | "left";
+  dropDownAlign?: "center" | "end" | "start";
+  dropDownContentClassName?:string,
+  onPointerDownHandler?: (info: any) => void;
+  staticColumns?: boolean;
+  staticHeight?: string;
+};
+
 export type RTableProps = {
-  Records: {
-    columns: ColumnDef<any>[];
-    data: any[];
-    actions?: TableAction[];
-    removeDropDownActions?: boolean;
-    triggerDropDownComponent?: (info: any) => React.ReactNode;
-    onPointerDownHandler?: (info: any) => void;
-    staticColumns?: boolean;
-    staticHeight?: string;
-  };
+  Records: TableRecords;
   containerClassName?: string;
   emptyData?: string | React.ReactNode;
   callBack?: (table: any) => void;
@@ -144,10 +157,10 @@ export type RTableProps = {
 };
 
 export type RTooltipProps = {
-  trigger?: ReactNode;
+  triggerComponent?: ReactNode;
   tooltipText?: string;
   triggerClassName?: string;
-  tooltipBackground?: string;
+  contentClassName?: string;
   delayDuration?: number;
   side?: "top" | "bottom" | "left" | "right";
 };
@@ -168,7 +181,7 @@ export type RAlertDialogProps = {
   disableTrigger?: boolean;
 };
 
-export type RNewButtonProps = {
+export type RButtonProps = {
   className?: string;
   textClassName?: string;
   disabled?: boolean;
@@ -188,13 +201,33 @@ export type RNewButtonProps = {
     | "destructive"
     | "outline"
     | "secondary";
-  size: "default" | "sm" | "lg" | "icon";
+  size?: "default" | "sm" | "lg" | "icon";
 };
 
+export type RInputProps = InputHTMLAttributes<HTMLInputElement> & {
+  className?: string;
+  inputError?: boolean;
+  inputClassName?: string;
+  isLoading?: boolean;
+};
 
-export type RLoaderInputProps = InputHTMLAttributes<HTMLInputElement> & {
-	className?: string;
-	inputError?: boolean;
-	inputClassName?: string;
-	isLoading?: boolean;
+export type RSearchInputProps = {
+  searchData: string;
+  handleSearchClicked: () => void;
+  handleDataChanged: (value: string) => void;
+  searchLoading?: boolean;
+  placeholder?: string;
+  inputDisabled?: boolean;
+  className?: string;
+  removeCloseIcon?: boolean;
+};
+
+export type RImageNameProps = {
+  name?: string;
+  type?: "user" | "group" | "course";
+  image?: string;
+  imageClassName?: string;
+  className?: string;
+  onClick?: () => void;
+  textClassName?: string;
 };

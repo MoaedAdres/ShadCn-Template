@@ -1,41 +1,14 @@
 import { CustomRoute } from "@/types/index.type";
+import DriversLister from "@/Views/Dashboard/Drivers/DriversLister";
 import Home from "@/Views/Dashboard/Home";
 import Test from "@/Views/Dashboard/test";
 
 export const dashboardRoutes: CustomRoute[] = [
   {
-    path: "users",
+    path: "drivers",
     exact: false,
-    breadcrumb: "Users",
-    Component: Home,
-    // routes: [{ path: ":userId", Component: Test }],
-  },
-  {
-    path: "roles",
-    exact: false,
-    breadcrumb: "Rloles",
-    Component: Home,
-    // routes: [{ path: ":userId", Component: Test }],
-  },
-  {
-    path: "roles/:id",
-    exact: false,
-    breadcrumb: "Create",
-    Component: Home,
-    // routes: [{ path: ":userId", Component: Test }],
-  },
-  {
-    path: "user-types",
-    exact: false,
-    breadcrumb: "User-Types",
-    Component: Home,
-    // routes: [{ path: ":userId", Component: Test }],
-  },
-  {
-    path: "models",
-    exact: false,
-    breadcrumb: "User-Types",
-    Component: Home,
+    breadcrumb: "Drivers",
+    Component: DriversLister,
     // routes: [{ path: ":userId", Component: Test }],
   },
 ];

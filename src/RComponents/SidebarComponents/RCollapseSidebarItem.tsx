@@ -7,9 +7,8 @@ import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { SidebarItemProps } from "@/types/index.type";
 import { renderSidebarItem } from "@/utils/renderSidebarItem";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-
+import {t} from "i18next"
 const RCollapseSidebarItem = ({
   items,
   title,
@@ -22,7 +21,6 @@ const RCollapseSidebarItem = ({
     childPaths?.some((childPath) => location.pathname.includes(childPath)) ??
     false;
   const [isActive, setIsActive] = useState<boolean>(childPathActive);
-  const { t } = useTranslation();
   const navigate = useNavigate();
   console.log("logggg", location.pathname);
   return (

@@ -14,7 +14,7 @@ html[data-theme="theme-light-green"] {
   --destructive: 0 90% 60%; /* Red */
   --destructive-foreground: 130 40% 98%; /* Light Green */
   --border: 130 20% 90%; /* Light Green */
-  --input: 130 20% 90%; /* Light Green */
+  --input: 130 12% 72%; /* Light Green */
   --ring: 140 80% 60%; /* Green */
 
   /* Sidebar Colors */

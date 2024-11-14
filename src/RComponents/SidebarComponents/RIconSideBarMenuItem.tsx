@@ -3,9 +3,8 @@ import { SidebarItemType } from "@/constants/constant";
 import RDropdown from "@/RComponents/RDropDown";
 import { ActionItem, SidebarItemProps } from "@/types/index.type";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-
+import {t} from "i18next"
 const RIconSideBarMenuItem = ({
   items,
   Icon,
@@ -22,7 +21,6 @@ const RIconSideBarMenuItem = ({
   const childPathActive =
     childPaths?.some((childPath) => location.pathname.includes(childPath)) ??
     false;
-  const { t } = useTranslation();
   console.log("icon items", type);
   const getActions = (items: any) => {
     const innerAtions: ActionItem[] = [];
