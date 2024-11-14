@@ -19,6 +19,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const DriversLister = () => {
+  console.log("rerendering: DriversLister rerendered");
   const [searchData, setSearchData] = useState<string>("");
   const { t } = useTranslation();
   const handleSearchClicked = () => {};
@@ -53,7 +54,14 @@ const DriversLister = () => {
         },
         renderCell: ({ row }) => {
           return (
-            <RImageName name={row.original.name} image={row?.original?.image} />
+            <RImageName
+              onClick={() =>
+                navigate(`${row.original.id}?driver=${row?.original.name}`)
+              }
+              className="hover:text-muted-foreground hover:underline cursor-pointer"
+              name={row.original.name}
+              image={row?.original?.image}
+            />
           );
         },
       },

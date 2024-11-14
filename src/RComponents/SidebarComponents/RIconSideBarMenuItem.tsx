@@ -4,7 +4,7 @@ import RDropdown from "@/RComponents/RDropDown";
 import { ActionItem, SidebarItemProps } from "@/types/index.type";
 import { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import {t} from "i18next"
+import { t } from "i18next";
 const RIconSideBarMenuItem = ({
   items,
   Icon,
@@ -19,7 +19,8 @@ const RIconSideBarMenuItem = ({
   const [isActive, setIsActive] = useState<boolean>(false);
   const navigate = useNavigate();
   const childPathActive =
-    childPaths?.some((childPath) => location.pathname.includes(childPath)) ??
+    (childPaths?.some((childPath) => location.pathname.includes(childPath)) ||
+      (path && location.pathname.includes(path))) ??
     false;
   console.log("icon items", type);
   const getActions = (items: any) => {
