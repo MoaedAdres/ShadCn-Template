@@ -1,4 +1,15 @@
 {
-  "Users": "Ochers",
-  "Drivers":"Devers"
+  "Platform": "Platform",
+  "users": "Brugere",
+  "dashboard": "Dashboard",
+  "search_for_name_or_number": "Søg efter navn eller nummer",
+  "join_requests": "Anmodninger om at deltage",
+  "driver_name": "Chaufførens navn",
+  "phone_number": "Telefonnummer",
+  "email": "Email",
+  "active_status": "Aktiv status",
+  "active_in_a_shift": "Aktiv i et skift",
+  "join_date": "Indmeldelsesdato",
+  "evaluation": "Evaluering",
+  "drivers": "Chauffører"
 }

@@ -20,17 +20,13 @@ const RBreadcrumb = () => {
           index != breadcrumbObjects.length - 1 ? (
             <>
               <BreadcrumbItem className="hidden md:block">
-                <Link to={breadcrumbItem.path}>
-                  {t(capitalizeFirstLetter(breadcrumbItem.title))}
-                </Link>
+                <Link to={breadcrumbItem.path}>{t(breadcrumbItem.title)}</Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
             </>
           ) : (
             <BreadcrumbItem>
-              <BreadcrumbPage>
-                {t(capitalizeFirstLetter(breadcrumbItem.title))}
-              </BreadcrumbPage>
+              <BreadcrumbPage>{t(breadcrumbItem.title)}</BreadcrumbPage>
             </BreadcrumbItem>
           )
         )}

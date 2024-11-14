@@ -5,27 +5,38 @@ import { createContext, useEffect, useState } from "react";
 // import { useSelector } from "react-redux";
 import RNavbar from "@/Layouts/RNavbar";
 import { Outlet, useLocation, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Define the shape of the theme context
-export interface ThemeContextType {
+export interface DashboardContextType {
   theme: string;
   toggleTheme: (newTheme: string) => void;
+  activeLanguage: string;
+  switchLanguage: (language: string) => void;
 }
 
 // Create the ThemeContext with a default value of `undefined` initially
-export const ThemeContext = createContext<ThemeContextType | undefined>(
-  undefined
-);
+export const DashboardContext = createContext<DashboardContextType>({
+  theme: "",
+  toggleTheme: () => {},
+  activeLanguage: "en",
+  switchLanguage: () => {},
+});
 
 export default function Dashboard() {
-  // const count = useSelector((state: RootState) => state.auth.id);
-  const location = useLocation();
-  const h = useParams();
-  console.log("location", location);
-  console.log("location", h);
-  // const f = useNavigate();
-  // Define the theme state with type annotation
   const [theme, setTheme] = useState<string>(""); // Default theme
+
+  const [activeLanguage, setActiveLanguage] = useState<string>(
+    localStorage.getItem("lang") || "en"
+  );
+  const { i18n } = useTranslation();
+
+  const switchLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+    setActiveLanguage(language);
+    document.querySelector("html")?.setAttribute("lang", language);
+    localStorage.setItem("lang", language); // Persist theme
+  };
 
   useEffect(() => {
     // Apply saved theme from localStorage or use default
@@ -33,6 +44,11 @@ export default function Dashboard() {
     if (savedTheme) {
       setTheme(savedTheme);
       document.querySelector("html")?.setAttribute("data-theme", savedTheme);
+    }
+    const language = localStorage.getItem("lang");
+    if (language) {
+      setActiveLanguage(language);
+      i18n.changeLanguage(language);
     }
   }, []);
 
@@ -45,7 +61,9 @@ export default function Dashboard() {
 
   return (
     <SidebarProvider>
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <DashboardContext.Provider
+        value={{ theme, toggleTheme, activeLanguage, switchLanguage }}
+      >
         <RAppSidebar contentData={sidebarContent} />
         {/* <BreadcrumbTracker /> */}
         <SidebarInset>
@@ -57,7 +75,7 @@ export default function Dashboard() {
             <Outlet />
           </div>
         </SidebarInset>
-      </ThemeContext.Provider>
+      </DashboardContext.Provider>
     </SidebarProvider>
   );
 }

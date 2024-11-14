@@ -1,4 +1,15 @@
 {
   "Platform": "Platform",
-  "Users": "Users"
+  "users": "Users",
+  "dashboard": "Dashboard",
+  "search_for_name_or_number": "Search for name or number",
+  "join_requests": "Join requests",
+  "driver_name": "Driver name",
+  "phone_number": "Phone number",
+  "email": "Email",
+  "active_status": "Active status",
+  "active_in_a_shift": "Active in a shift",
+  "join_date": "join date",
+  "evaluation": "Evaluation",
+  "drivers":"Drivers"
 }

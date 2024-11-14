@@ -111,6 +111,7 @@ export type TableAction = {
   name: string;
   Icon?: LucideIcon;
   actionIconClass?: string;
+  actionTextClass?:string
   needLoader?: boolean;
   iconFn?: (info: any) => string;
   onClick: (info: CellContext<any, any>) => void;

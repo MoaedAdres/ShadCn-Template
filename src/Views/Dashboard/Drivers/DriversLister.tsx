@@ -6,20 +6,22 @@ import RTable from "@/RComponents/RTable";
 import RTooltip from "@/RComponents/RTooltip";
 import { CustomColumn, TableAction, TableRecords } from "@/types/index.type";
 import { drivers } from "@/Views/Dashboard/Drivers/fakeData";
-import { t } from "i18next";
-import { Info, List, Rocket, View } from "lucide-react";
+// import { t } from "i18next";
+import { Info, List, Rocket, Trash, View } from "lucide-react";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const DriversLister = () => {
   const [searchData, setSearchData] = useState<string>("");
+  const { t } = useTranslation();
   const handleSearchClicked = () => {};
   const navigate = useNavigate();
   const columns: CustomColumn[] = [
     {
       id: "name",
       renderHeader: (info) => {
-        return <span>{t("Driver_Name")}</span>;
+        return <span>{t("driver_name")}</span>;
       },
       renderCell: ({ row }) => {
         return (
@@ -30,7 +32,7 @@ const DriversLister = () => {
     {
       id: "phone_number",
       renderHeader: (info) => {
-        return <span>{t("Phone_number")}</span>;
+        return <span>{t("phone_number")}</span>;
       },
       renderCell: ({ row }) => {
         return <span>{row.original?.phone_number}</span>;
@@ -39,7 +41,7 @@ const DriversLister = () => {
     {
       id: "email",
       renderHeader: (info) => {
-        return <span>{t("Email")}</span>;
+        return <span>{t("email")}</span>;
       },
       renderCell: ({ row }) => {
         return <span>{row.original?.email}</span>;
@@ -68,7 +70,7 @@ const DriversLister = () => {
     {
       id: "active_in_shift",
       renderHeader: (info) => {
-        return <span>{t("active_in_a_Shift")}</span>;
+        return <span>{t("active_in_a_shift")}</span>;
       },
       renderCell: ({ row }) => {
         return row?.original?.active_status ? (
@@ -109,11 +111,26 @@ const DriversLister = () => {
       Icon: View,
       inDropdown: true,
       onClick: ({ row }) => {
-        navigate(`drivers/${row.original.id}?driver=${row?.original.name}`);
+        navigate(`${row.original.id}?driver=${row?.original.name}`);
       },
     },
+    {
+      name: "Delete",
+      Icon: Trash,
+      inDropdown: true,
+      onClick: ({ row }) => {
+        navigate(`drivers/${row.original.id}?driver=${row?.original.name}`);
+      },
+      actionIconClass: "text-destructive",
+      actionTextClass: "text-destructive",
+    },
   ];
-  const records: TableRecords = { columns, data: drivers, actions: actions,dropDownContentClassName:"w-fit" };
+  const records: TableRecords = {
+    columns,
+    data: drivers,
+    actions: actions,
+    dropDownContentClassName: "w-fit",
+  };
   return (
     <RFlex className="flex-col gap-6">
       <RFlex className="w-full justify-between">
@@ -123,12 +140,7 @@ const DriversLister = () => {
           handleDataChanged={(data) => setSearchData(data)}
           placeholder="search_for_name_or_number"
         />
-        <RButton
-          text="join_requests"
-          variant="secondary"
-          Icon={List}
-          iconRight
-        />
+        <RButton text="join_requests" variant="default" Icon={List} iconRight />
       </RFlex>
 
       <RTable Records={records} />
