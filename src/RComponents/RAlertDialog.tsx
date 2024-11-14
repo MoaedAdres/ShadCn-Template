@@ -1,4 +1,3 @@
-import { t } from "i18next";
 import React from "react";
 import {
   AlertDialog,
@@ -13,12 +12,13 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { RAlertDialogProps } from "@/types/index.type";
+import { useTranslation } from "react-i18next";
 
 const RAlertDialog: React.FC<RAlertDialogProps> = ({
-  component = <Button>{t("Open_Alert_Dialog")}</Button>,
-  title = t("Are_you_sure_you_want_to_delete"),
-  description = t("This_action_cannot_be_undone"),
-  cancelText = t("cancel"),
+  component,
+  title,
+  description,
+  cancelText,
   cancelClassName,
   confirmText,
   confirmClassName,
@@ -26,27 +26,30 @@ const RAlertDialog: React.FC<RAlertDialogProps> = ({
   headerItemsPosition = "items-center",
   disableTrigger = false,
 }) => {
+  const { t } = useTranslation();
   return (
     <AlertDialog>
       <AlertDialogTrigger disabled={disableTrigger}>
-        {component}
+        {component ? component : <Button>{t("Open_Alert_Dialog")}</Button>}
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader className={headerItemsPosition}>
           <AlertDialogTitle className="font-bold text-[16px]">
-            {title}
+            {title ? t(title) : t("Are_you_sure_you_want_to_delete")}
           </AlertDialogTitle>
-          <AlertDialogDescription>{description}</AlertDialogDescription>
+          <AlertDialogDescription>
+            {description ? t(description) : t("This_action_cannot_be_undone")}
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="items-end">
           <AlertDialogCancel className={cancelClassName}>
-            {cancelText}
+            {cancelText ? t(cancelText) : t("cancel")}
           </AlertDialogCancel>
           <AlertDialogAction
             onClick={() => confirmAction()}
             className={confirmClassName}
           >
-            {confirmText}
+            {confirmText ? t(confirmText) : "yes"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

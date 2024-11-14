@@ -5,7 +5,7 @@ import {
 import { SidebarSubMenuItemProps } from "@/types/index.type";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 const RSubMenuSidebarItem = ({
   title,
   Icon,
@@ -13,7 +13,7 @@ const RSubMenuSidebarItem = ({
   childPaths,
 }: SidebarSubMenuItemProps) => {
   const location = useLocation();
-
+  const { t } = useTranslation();
   const childPathActive =
     childPaths?.some((childPath) => location.pathname.includes(childPath)) ??
     false;

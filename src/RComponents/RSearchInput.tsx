@@ -1,10 +1,10 @@
 import React, { ChangeEvent, KeyboardEvent } from "react";
 import RFlex from "@/RComponents/RFlex";
-import { t } from "i18next";
 import { Input } from "@/components/ui/input";
 import { Loader, Search } from "lucide-react";
 import { RSearchInputProps } from "@/types/index.type";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import { useTranslation } from "react-i18next";
 
 const RSearchInput: React.FC<RSearchInputProps> = ({
   searchLoading,
@@ -15,6 +15,7 @@ const RSearchInput: React.FC<RSearchInputProps> = ({
   inputDisabled = false,
   className = "w-[270px]",
 }) => {
+  const { t } = useTranslation();
   return (
     <RFlex className={`relative ${className}`}>
       <Input

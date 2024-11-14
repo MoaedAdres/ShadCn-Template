@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import RFlex from "@/RComponents/RFlex";
 import { RButtonProps } from "@/types/index.type";
 import { Loader } from "lucide-react";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 const RButton: React.FC<RButtonProps> = ({
   className,
   disabled = false,
@@ -18,6 +18,7 @@ const RButton: React.FC<RButtonProps> = ({
   textClassName,
   size = "default",
 }) => {
+  const { t } = useTranslation();
   return (
     <Button
       key={key || ""}

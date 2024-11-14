@@ -6,11 +6,11 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { generateBreadcrumbFromLocation } from "@/utils/generateBreadcrumbObjects";
-import { capitalizeFirstLetter } from "@/utils/helperFunctions";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 const RBreadcrumb = () => {
   const location = useLocation();
+  const { t } = useTranslation();
   const params = useParams();
   const breadcrumbObjects = generateBreadcrumbFromLocation(location, params);
   return (

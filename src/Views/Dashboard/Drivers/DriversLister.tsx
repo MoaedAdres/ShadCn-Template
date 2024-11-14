@@ -6,7 +6,6 @@ import RTable from "@/RComponents/RTable";
 import RTooltip from "@/RComponents/RTooltip";
 import { CustomColumn, TableAction, TableRecords } from "@/types/index.type";
 import { drivers } from "@/Views/Dashboard/Drivers/fakeData";
-// import { t } from "i18next";
 import { Info, List, Rocket, Trash, View } from "lucide-react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
