@@ -12,11 +12,7 @@ const RSubMenuSidebarItem = ({
   path,
   childPaths,
 }: SidebarSubMenuItemProps) => {
-  const location = useLocation();
   const { t } = useTranslation();
-  const childPathActive =
-    childPaths?.some((childPath) => location.pathname.includes(childPath)) ??
-    false;
   const [isActive, setIsActive] = useState<boolean>(false);
   console.log("isActiveeee", isActive);
   return (

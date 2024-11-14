@@ -46,6 +46,7 @@ const RTable: React.FC<RTableProps> = ({
   setFinishedOperation,
   loading,
 }) => {
+  console.log("rerendering: table rerendered");
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -337,4 +338,4 @@ const RTable: React.FC<RTableProps> = ({
   );
 };
 
-export default RTable;
+export default React.memo(RTable);

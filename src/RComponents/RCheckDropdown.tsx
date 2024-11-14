@@ -46,7 +46,7 @@ const RCheckDropdown: React.FC<RCheckDropdownProps> = ({
       <DropdownMenuContent
         side={side ? side : isMobile ? "bottom" : "right"}
         align={align ? align : isMobile ? "end" : "start"}
-        className={cn("w-48 rounded-lg", contentClassName)}
+        className={cn("w-24 rounded-lg", contentClassName)}
       >
         {label && <DropdownMenuLabel>{label}</DropdownMenuLabel>}
         {Object.keys(actions).map((key, index) => (

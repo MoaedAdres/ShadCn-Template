@@ -1,13 +1,20 @@
+import { Button } from "@/components/ui/button";
 import RButton from "@/RComponents/RButton";
+import RCheckDropdown from "@/RComponents/RCheckDropdown";
 import RFlex from "@/RComponents/RFlex";
 import RImageName from "@/RComponents/RImageName";
 import RSearchInput from "@/RComponents/RSearchInput";
 import RTable from "@/RComponents/RTable";
 import RTooltip from "@/RComponents/RTooltip";
-import { CustomColumn, TableAction, TableRecords } from "@/types/index.type";
+import {
+  CheckActionItem,
+  CustomColumn,
+  TableAction,
+  TableRecords,
+} from "@/types/index.type";
 import { drivers } from "@/Views/Dashboard/Drivers/fakeData";
-import { Info, List, Rocket, Trash, View } from "lucide-react";
-import React, { useState } from "react";
+import { Filter, Info, List, Rocket, Trash, View } from "lucide-react";
+import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -16,120 +23,168 @@ const DriversLister = () => {
   const { t } = useTranslation();
   const handleSearchClicked = () => {};
   const navigate = useNavigate();
-  const columns: CustomColumn[] = [
-    {
-      id: "name",
-      renderHeader: (info) => {
-        return <span>{t("driver_name")}</span>;
-      },
-      renderCell: ({ row }) => {
-        return (
-          <RImageName name={row.original.name} image={row?.original?.image} />
-        );
-      },
+  // here we don't need to use useMemo even onlineActions is an object because it's a state and react keep tracking and it's know when the
+  // object state change and when it's not so event the column depends on it it , columns will only rerendered only if the onlineAcions actually change
+  // becuase it's a state
+  const [onlineActions, setOnlineActions] = useState<{
+    [key: string]: CheckActionItem;
+  }>({
+    "1": {
+      checked: false,
+      name: "Online",
+      actionTextClass: "text-green-800",
+      onCheckedChange: (checkedFlag) => {},
     },
-    {
-      id: "phone_number",
-      renderHeader: (info) => {
-        return <span>{t("phone_number")}</span>;
-      },
-      renderCell: ({ row }) => {
-        return <span>{row.original?.phone_number}</span>;
-      },
-    },
-    {
-      id: "email",
-      renderHeader: (info) => {
-        return <span>{t("email")}</span>;
-      },
-      renderCell: ({ row }) => {
-        return <span>{row.original?.email}</span>;
-      },
-    },
-    {
-      id: "isOnline",
-      renderHeader: (info) => {
-        return <span>{t("active_status")}</span>;
-      },
-      renderCell: ({ row }) => {
-        return row?.original?.isOnline ? (
-          <p className="flex gap-1   items-center ">
-            <span className="text-green-800">{t("Online")} </span>
-            <RTooltip
-              triggerComponent={<Info className="w-3 h-3" />}
-              triggerClassName="mt-1"
-              tooltipText={row.original?.vehicle_type}
-            />
-          </p>
-        ) : (
-          <span className="text-destructive">{t("Offline")}</span>
-        );
-      },
-    },
-    {
-      id: "active_in_shift",
-      renderHeader: (info) => {
-        return <span>{t("active_in_a_shift")}</span>;
-      },
-      renderCell: ({ row }) => {
-        return row?.original?.active_status ? (
-          <RTooltip
-            triggerComponent={
-              <span className="text-green-800">{t("Active")} </span>
-            }
-            triggerClassName="mt-1"
-            tooltipText={row.original?.shift_number}
-          />
-        ) : (
-          <span className="text-destructive">{t("Inactive")}</span>
-        );
-      },
-    },
-    {
-      id: "join_date",
-      renderHeader: (info) => {
-        return <span>{t("join_date")}</span>;
-      },
-      renderCell: ({ row }) => {
-        return <span>{row.original?.join_date}</span>;
-      },
-    },
-    {
-      id: "evaluation",
-      renderHeader: (info) => {
-        return <span>{t("evaluation")}</span>;
-      },
-      renderCell: ({ row }) => {
-        return <span>{row.original?.evaluation}</span>;
-      },
-    },
-  ];
-  const actions: TableAction[] = [
-    {
-      name: "View",
-      Icon: View,
-      inDropdown: true,
-      onClick: ({ row }) => {
-        navigate(`${row.original.id}?driver=${row?.original.name}`);
-      },
-    },
-    {
-      name: "Delete",
-      Icon: Trash,
-      inDropdown: true,
-      onClick: ({ row }) => {
-        navigate(`drivers/${row.original.id}?driver=${row?.original.name}`);
-      },
-      actionIconClass: "text-destructive",
+    "2": {
+      checked: false,
+      name: "Offline",
       actionTextClass: "text-destructive",
+      onCheckedChange: (checkedFlag) => {},
     },
-  ];
-  const records: TableRecords = {
-    columns,
-    data: drivers,
-    actions: actions,
-    dropDownContentClassName: "w-fit",
-  };
+  });
+  // the normal object we should use use memo with it becuase unlike states, react don't trace normal object so as because columns are a dependancy of the record object
+  // each render time column will have a new object reference unless we wrap it with useMemo
+  const columns: CustomColumn[] = useMemo(
+    () => [
+      {
+        id: "name",
+        renderHeader: (info) => {
+          return <span>{t("driver_name")}</span>;
+        },
+        renderCell: ({ row }) => {
+          return (
+            <RImageName name={row.original.name} image={row?.original?.image} />
+          );
+        },
+      },
+      {
+        id: "phone_number",
+        renderHeader: (info) => {
+          return <span>{t("phone_number")}</span>;
+        },
+        renderCell: ({ row }) => {
+          return <span>{row.original?.phone_number}</span>;
+        },
+      },
+      {
+        id: "email",
+        renderHeader: (info) => {
+          return <span>{t("email")}</span>;
+        },
+        renderCell: ({ row }) => {
+          return <span>{row.original?.email}</span>;
+        },
+      },
+      {
+        id: "isOnline",
+        renderHeader: (info) => {
+          return (
+            <RFlex className="items-center gap-1">
+              <span>{t("active_status")}</span>
+              <RCheckDropdown
+                triggerComponent={
+                  <Button variant="ghost" className="p-0 hover:bg-transparent">
+                    <Filter className="w-4 h-4" />
+                  </Button>
+                }
+                // KeepActiveItemChecked
+                side="bottom"
+                align="start"
+                actions={onlineActions}
+                setActions={setOnlineActions}
+              />
+            </RFlex>
+          );
+        },
+        renderCell: ({ row }) => {
+          return row?.original?.isOnline ? (
+            <p className="flex gap-1   items-center ">
+              <span className="text-green-800">{t("Online")} </span>
+              <RTooltip
+                triggerComponent={<Info className="w-3 h-3" />}
+                triggerClassName="mt-1"
+                tooltipText={row.original?.vehicle_type}
+              />
+            </p>
+          ) : (
+            <span className="text-destructive">{t("Offline")}</span>
+          );
+        },
+      },
+      {
+        id: "active_in_shift",
+        renderHeader: (info) => {
+          return <span>{t("active_in_a_shift")}</span>;
+        },
+        renderCell: ({ row }) => {
+          return row?.original?.active_status ? (
+            <RTooltip
+              triggerComponent={
+                <span className="text-green-800">{t("Active")} </span>
+              }
+              triggerClassName="mt-1"
+              tooltipText={row.original?.shift_number}
+            />
+          ) : (
+            <span className="text-destructive">{t("Inactive")}</span>
+          );
+        },
+      },
+      {
+        id: "join_date",
+        renderHeader: (info) => {
+          return <span>{t("join_date")}</span>;
+        },
+        renderCell: ({ row }) => {
+          return <span>{row.original?.join_date}</span>;
+        },
+      },
+      {
+        id: "evaluation",
+        renderHeader: (info) => {
+          return <span>{t("evaluation")}</span>;
+        },
+        renderCell: ({ row }) => {
+          return <span>{row.original?.evaluation}</span>;
+        },
+      },
+    ],
+    [t, onlineActions]
+  );
+  // const data = useMemo(() => drivers, []);
+  const actions: TableAction[] = useMemo(
+    () => [
+      {
+        name: "View",
+        Icon: View,
+        inDropdown: true,
+        onClick: ({ row }) => {
+          navigate(`${row.original.id}?driver=${row?.original.name}`);
+        },
+      },
+      {
+        name: "Delete",
+        Icon: Trash,
+        inDropdown: true,
+        onClick: ({ row }) => {
+          navigate(`drivers/${row.original.id}?driver=${row?.original.name}`);
+        },
+        actionIconClass: "text-destructive",
+        actionTextClass: "text-destructive",
+      },
+    ],
+    []
+  );
+  const records = useMemo(
+    () => ({
+      columns,
+      data: drivers,
+      actions,
+      dropDownContentClassName: "w-fit",
+    }),
+    [columns, drivers, actions]
+  );
+
   return (
     <RFlex className="flex-col gap-6">
       <RFlex className="w-full justify-between">
