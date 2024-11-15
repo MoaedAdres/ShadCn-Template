@@ -153,3 +153,171 @@ export const drivers: driverType[] = [
     evaluation: "good",
   },
 ];
+
+type Driver = {
+  name: string;
+  gender: string;
+  phone: string;
+  email: string;
+  join_date: string;
+  location: string;
+  evaulation: string;
+  active: boolean;
+};
+export const driver: Driver = {
+  name: "Ahmad ali Hussain",
+  gender: "Male",
+  phone: "+963937552480",
+  email: "moaedadres22@gmail.com",
+  join_date: "2024-11-11",
+  location: "Damasucs/fhama",
+  evaulation: "5",
+  active: true,
+};
+
+type Trip = {
+  order_number: string;
+  customer_name: string;
+  vehicle_type: string;
+  vehicle_number: string;
+  source: string;
+  destenation: string;
+  status: "completed" | "canceld" | "active";
+  evaluation: "0" | "1" | "2" | "3" | "4" | "5";
+  price: string;
+  date: string;
+  shift_number: string;
+};
+
+export const trips: Trip[] = [
+  {
+    order_number: "ORD123456",
+    customer_name: "John Doe",
+    vehicle_type: "Sedan",
+    vehicle_number: "AB1234XY",
+    source: "New York",
+    destenation: "Boston",
+    status: "completed",
+    evaluation: "5",
+    price: "120.00",
+    date: "2024-11-10",
+    shift_number: "SHIFT001",
+  },
+  {
+    order_number: "ORD654321",
+    customer_name: "Jane Smith",
+    vehicle_type: "SUV",
+    vehicle_number: "CD5678YZ",
+    source: "Los Angeles",
+    destenation: "San Francisco",
+    status: "active",
+    evaluation: "0",
+    price: "150.50",
+    date: "2024-11-12",
+    shift_number: "SHIFT002",
+  },
+  {
+    order_number: "ORD112233",
+    customer_name: "Michael Brown",
+    vehicle_type: "Truck",
+    vehicle_number: "EF9012WX",
+    source: "Chicago",
+    destenation: "Detroit",
+    status: "canceld",
+    evaluation: "0",
+    price: "200.00",
+    date: "2024-10-25",
+    shift_number: "SHIFT003",
+  },
+  {
+    order_number: "ORD445566",
+    customer_name: "Emily Davis",
+    vehicle_type: "Van",
+    vehicle_number: "GH3456UV",
+    source: "Houston",
+    destenation: "Dallas",
+    status: "completed",
+    evaluation: "4",
+    price: "90.00",
+    date: "2024-11-05",
+    shift_number: "SHIFT004",
+  },
+  {
+    order_number: "ORD778899",
+    customer_name: "Chris Wilson",
+    vehicle_type: "Hatchback",
+    vehicle_number: "IJ7890TU",
+    source: "Miami",
+    destenation: "Orlando",
+    status: "completed",
+    evaluation: "3",
+    price: "75.00",
+    date: "2024-11-08",
+    shift_number: "SHIFT005",
+  },
+  {
+    order_number: "ORD987654",
+    customer_name: "Sarah Johnson",
+    vehicle_type: "Sedan",
+    vehicle_number: "KL0123RS",
+    source: "Seattle",
+    destenation: "Portland",
+    status: "canceld",
+    evaluation: "0",
+    price: "100.00",
+    date: "2024-11-02",
+    shift_number: "SHIFT006",
+  },
+  {
+    order_number: "ORD192837",
+    customer_name: "David Martinez",
+    vehicle_type: "SUV",
+    vehicle_number: "MN4567QP",
+    source: "Atlanta",
+    destenation: "Charlotte",
+    status: "active",
+    evaluation: "0",
+    price: "110.50",
+    date: "2024-11-15",
+    shift_number: "SHIFT007",
+  },
+  {
+    order_number: "ORD564738",
+    customer_name: "Anna Garcia",
+    vehicle_type: "Truck",
+    vehicle_number: "OP8910NM",
+    source: "Denver",
+    destenation: "Salt Lake City",
+    status: "completed",
+    evaluation: "5",
+    price: "250.00",
+    date: "2024-10-30",
+    shift_number: "SHIFT008",
+  },
+  {
+    order_number: "ORD374859",
+    customer_name: "James Clark",
+    vehicle_type: "Van",
+    vehicle_number: "QR2345LK",
+    source: "Phoenix",
+    destenation: "Tucson",
+    status: "active",
+    evaluation: "0",
+    price: "95.00",
+    date: "2024-11-11",
+    shift_number: "SHIFT009",
+  },
+  {
+    order_number: "ORD485960",
+    customer_name: "Olivia White",
+    vehicle_type: "Hatchback",
+    vehicle_number: "ST6789JH",
+    source: "San Diego",
+    destenation: "Las Vegas",
+    status: "completed",
+    evaluation: "2",
+    price: "175.00",
+    date: "2024-11-06",
+    shift_number: "SHIFT010",
+  },
+];

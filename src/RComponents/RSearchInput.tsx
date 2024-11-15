@@ -17,7 +17,7 @@ const RSearchInput: React.FC<RSearchInputProps> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <RFlex className={`relative ${className}`}>
+    <RFlex className={`relative h-fit ${className}`}>
       <Input
         type="text"
         placeholder={placeholder ? t(placeholder) : t`search`}
@@ -41,7 +41,7 @@ const RSearchInput: React.FC<RSearchInputProps> = ({
         </RFlex>
       ) : (
         <Search
-          className={` absolute left-3 top-[50%] hover:text-muted-foreground/75 -translate-y-1/2 w-4 h-4 text-themeLight cursor-pointer`}
+          className={` absolute left-3 top-[50%] hover:text-muted-foreground -translate-y-1/2 w-4 h-4 text-themeLight cursor-pointer`}
           onClick={() => handleSearchClicked()}
         />
       )}
@@ -49,7 +49,7 @@ const RSearchInput: React.FC<RSearchInputProps> = ({
       {searchData !== "" && (
         <Cross2Icon
           aria-hidden="true"
-          className={`absolute right-3 top-[50%] hover:text-muted-foreground/75 -translate-y-1/2 w-4 h-4 text-themeLight cursor-pointer`}
+          className={`absolute right-3 top-[50%] hover:text-muted-foreground -translate-y-1/2 w-4 h-4 text-themeLight cursor-pointer`}
           onClick={() => {
             if (searchData !== "") {
               handleDataChanged && handleDataChanged("");

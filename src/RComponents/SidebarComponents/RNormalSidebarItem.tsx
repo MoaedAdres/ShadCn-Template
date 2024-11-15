@@ -31,13 +31,13 @@ const RNormalSidebarItem = ({
           }}
         >
           <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
-            {Icon && <Icon />}
+            {Icon && <Icon className="text-muted-foreground" />}
             <span>{t(title)}</span>
           </SidebarMenuButton>
         </NavLink>
       ) : (
         <SidebarMenuButton className="cursor-pointer" isActive={isActive}>
-          {Icon && <Icon />}
+          {Icon && <Icon className="text-muted-foreground" />}
           <span>{t(title)}</span>
         </SidebarMenuButton>
       )}

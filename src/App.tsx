@@ -6,6 +6,7 @@ import RedirectRoute from "@/utils/RedirectRoute";
 import Dashboard from "@/Views/Dashboard/Dashboard";
 import { dashboardRoutes } from "@/routes/DashboardRoutes";
 import { generateRoutesFromObject } from "@/utils/generateRoutesFromObject";
+
 const App = () => {
   return (
     <Router>

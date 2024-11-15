@@ -9,7 +9,7 @@ const RSidebarGroup = ({ title, items, Icon }: SidebarGroupProps) => {
     <SidebarGroup>
       <SidebarGroupLabel>
         {Icon && <Icon />}
-        {t(title)}
+        {title && t(title)}
       </SidebarGroupLabel>
       {items.map((item) => renderSidebarItem(item))}
     </SidebarGroup>

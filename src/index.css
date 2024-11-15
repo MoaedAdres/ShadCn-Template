@@ -5,7 +5,9 @@
 @import "./styles/themes/dark.css";
 @import "./styles/themes/theme-blue-turquoise.css";
 @import "./styles/themes/theme-warm-peach-pink.css";
-@import "./styles/themes/theme-light-green.css";
+@import "./styles/themes/theme-green-1.css";
+@import "./styles/themes//theme-green-2.css";
+@import "./styles/themes//theme-green-3.css";
 
 .html {
   overflow: hidden;

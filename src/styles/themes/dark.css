@@ -1,6 +1,6 @@
 html[data-theme='dark'] {
     --background: 222.2 84% 4.9%; /* Very Dark Blue */
-    --foreground: 210 40% 98%; /* Almost White Blue */
+    --foreground: 0 0% 100%; /* Almost White Blue */
     --card: 222.2 84% 4.9%; /* Very Dark Blue */
     --card-foreground: 210 40% 98%; /* Almost White Blue */
     --popover: 222.2 84% 4.9%; /* Very Dark Blue */

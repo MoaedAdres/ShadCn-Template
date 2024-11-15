@@ -59,7 +59,7 @@ export type SidebarContentProps = {
   item: SidebarGroupProps | SidebarMenuProps;
 };
 export type SidebarGroupProps = {
-  title: string;
+  title?: string;
   type: SidebarItemType.GROUP;
   items: SidebarMenuProps[];
   Icon?: LucideIcon; // Add if `icon` is used in items
@@ -111,7 +111,7 @@ export type TableAction = {
   name: string;
   Icon?: LucideIcon;
   actionIconClass?: string;
-  actionTextClass?:string
+  actionTextClass?: string;
   needLoader?: boolean;
   iconFn?: (info: any) => string;
   onClick: (info: CellContext<any, any>) => void;
@@ -141,7 +141,7 @@ export type TableRecords = {
   triggerDropDownComponent?: (info: any) => React.ReactNode;
   dropDownSide?: "bottom" | "right" | "top" | "left";
   dropDownAlign?: "center" | "end" | "start";
-  dropDownContentClassName?:string,
+  dropDownContentClassName?: string;
   onPointerDownHandler?: (info: any) => void;
   staticColumns?: boolean;
   staticHeight?: string;
@@ -231,4 +231,12 @@ export type RImageNameProps = {
   className?: string;
   onClick?: () => void;
   textClassName?: string;
+};
+
+export type RPopoverProps = {
+  triggerComponent?: ReactNode;
+  triggerClassName?: string;
+  contentComponent: ReactNode;
+  contentClassName?: string;
+  isOpen?: boolean;
 };

@@ -1,0 +1,37 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { RPopoverProps } from "@/types/index.type";
+
+const RPopover = ({
+  triggerComponent,
+  triggerClassName,
+  contentComponent,
+  contentClassName,
+}: RPopoverProps) => {
+  return (
+    <Popover>
+      <PopoverTrigger
+        className={cn("cursor-pointer", triggerClassName)}
+        asChild
+      >
+        {triggerComponent ? (
+          triggerComponent
+        ) : (
+          <Button variant="outline">Open popover</Button>
+        )}
+      </PopoverTrigger>
+      <PopoverContent className={contentClassName}>
+        {contentComponent}
+      </PopoverContent>
+    </Popover>
+  );
+};
+
+export default RPopover;

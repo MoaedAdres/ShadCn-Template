@@ -68,10 +68,7 @@ export default function Dashboard() {
         {/* <BreadcrumbTracker /> */}
         <SidebarInset>
           <RNavbar />
-          <div
-            id="content wrapper"
-            className="p-2 mt-1 z-10"
-          >
+          <div id="content wrapper" className="p-2 mt-1 z-10">
             <Outlet />
           </div>
         </SidebarInset>

@@ -11,5 +11,6 @@
   "active_in_a_shift": "Active in a shift",
   "join_date": "join date",
   "evaluation": "Evaluation",
-  "drivers":"Drivers"
+  "drivers": "Drivers",
+  "driver_trips": "Driver trips"
 }

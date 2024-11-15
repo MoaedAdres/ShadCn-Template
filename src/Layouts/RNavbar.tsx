@@ -56,7 +56,7 @@ const RNavbar = ({}) => {
       >
         <RCheckDropdown
           triggerComponent={
-            <Globe className="w-4 h-4 hover:text-muted-foreground/75" />
+            <Globe className="w-4 h-4 hover:text-muted-foreground" />
           }
           itemClassName="pl-6"
           KeepActiveItemChecked
@@ -68,12 +68,12 @@ const RNavbar = ({}) => {
         />
         {dashboardContext?.theme === "dark" ? (
           <Sun
-            className="w-4 h-4 hover:text-muted-foreground/75 cursor-pointer"
+            className="w-4 h-4 hover:text-muted-foreground cursor-pointer"
             onClick={() => dashboardContext && dashboardContext.toggleTheme("")}
           />
         ) : (
           <Moon
-            className="w-4 h-4 hover:text-muted-foreground/75 cursor-pointer"
+            className="w-4 h-4 hover:text-muted-foreground cursor-pointer"
             onClick={() =>
               dashboardContext && dashboardContext.toggleTheme("dark")
             }
