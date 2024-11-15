@@ -206,6 +206,7 @@ const DriversLister = () => {
       </RFlex>
 
       <RTable Records={records} />
+      <RTable Records={records} />
     </RFlex>
   );
 };

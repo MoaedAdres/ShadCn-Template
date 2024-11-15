@@ -70,7 +70,7 @@ export default function Dashboard() {
           <RNavbar />
           <div
             id="content wrapper"
-            className="p-2 mt-1 overflow-y-auto  max-h-[90vh]"
+            className="p-2 mt-1 z-10"
           >
             <Outlet />
           </div>

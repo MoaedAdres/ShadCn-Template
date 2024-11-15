@@ -161,7 +161,7 @@ const RAppSidebar = ({
 }) => {
   console.log("sidebar");
   return (
-    <Sidebar collapsible="icon" variant="sidebar" {...props}>
+    <Sidebar collapsible="icon" variant="sidebar" className="h-full" {...props}>
       <SidebarHeader>
         <NavUser user={data.user} />
       </SidebarHeader>

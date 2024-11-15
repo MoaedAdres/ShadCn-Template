@@ -7,6 +7,9 @@
 @import "./styles/themes/theme-warm-peach-pink.css";
 @import "./styles/themes/theme-light-green.css";
 
+.html {
+  overflow: hidden;
+}
 /* custom scrollbar */
 ::-webkit-scrollbar {
   width: 18px;

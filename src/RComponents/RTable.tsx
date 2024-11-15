@@ -287,9 +287,9 @@ const RTable: React.FC<RTableProps> = ({
             <TableRow key={headerGroup.id}>
               {headerGroup.headers?.map((header) => (
                 <TableHead
-                  style={getCommonPinningStylesForHeaders(header.column)}
+                  // style={getCommonPinningStylesForHeaders(header.column)}
                   key={header.id}
-                  className="text-themeZinc font-weight-bold"
+                  className="text-foreground   font-weight-bold"
                 >
                   {header.isPlaceholder
                     ? null
@@ -313,7 +313,7 @@ const RTable: React.FC<RTableProps> = ({
                 >
                   {row.getVisibleCells()?.map((cell) => (
                     <TableCell
-                      style={getCommonPinningStylesForCells(cell.column)}
+                      // style={getCommonPinningStylesForCells(cell.column)}
                       key={cell.id}
                     >
                       {flexRender(
