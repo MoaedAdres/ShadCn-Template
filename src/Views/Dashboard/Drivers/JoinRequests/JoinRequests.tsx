@@ -41,7 +41,7 @@ const JoinRequests = () => {
             <User />
             {name}
           </span>
-          <span className="flex gap-1 item-center">
+          <span className="flex gap-1 item-center flex-wrap max-w-max">
             <Mail />
             {email}
           </span>
@@ -96,7 +96,7 @@ const JoinRequests = () => {
     );
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
       {joinRequests.map((request: JoinRequest) => (
         <RFlex className="flex-col gap-2">
           <RFlippingCard
@@ -107,7 +107,7 @@ const JoinRequests = () => {
             backContentComponent={backcontent(request)}
             backCardClassName="justify-between flex flex-col"
             backFooterComponent={
-              <RFlex className="w-full justify-between px-5">
+              <RFlex className="w-full gap-10 justify-center px-5">
                 <RButton
                   text="reject"
                   Icon={Cross1Icon}
