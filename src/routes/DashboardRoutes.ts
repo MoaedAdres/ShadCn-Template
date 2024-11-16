@@ -1,8 +1,6 @@
 import { CustomRoute } from "@/types/index.type";
-import DriverDetails from "@/Views/Dashboard/Drivers/DriverDetails";
+import DriverDetails from "@/Views/Dashboard/Drivers/DriverProfile/DriverProfile";
 import DriversLister from "@/Views/Dashboard/Drivers/DriversLister";
-import Home from "@/Views/Dashboard/Home";
-import Test from "@/Views/Dashboard/test";
 
 export const dashboardRoutes: CustomRoute[] = [
   {

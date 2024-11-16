@@ -163,6 +163,10 @@ type Driver = {
   location: string;
   evaulation: string;
   active: boolean;
+  licenees: string;
+  liceneesUrl?: string;
+  degree: string;
+  degreeUrl?: string;
 };
 export const driver: Driver = {
   name: "Ahmad ali Hussain",
@@ -173,6 +177,12 @@ export const driver: Driver = {
   location: "Damasucs/fhama",
   evaulation: "5",
   active: true,
+  licenees: "moaed licenees.jpg",
+  liceneesUrl:
+    "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+  degree: "moaed degree.jpg",
+  degreeUrl:
+    "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
 };
 
 type Trip = {
@@ -319,5 +329,108 @@ export const trips: Trip[] = [
     price: "175.00",
     date: "2024-11-06",
     shift_number: "SHIFT010",
+  },
+];
+
+type Shift = {
+  shift_number: string;
+  start_date: string;
+  end_date: string;
+  counter_at_the_start: string;
+  counter_at_the_end: string;
+  vehicle_type: string;
+  volman: string;
+};
+
+export const shifts: Shift[] = [
+  {
+    shift_number: "001",
+    start_date: "2024-11-16T08:00:00Z",
+    end_date: "2024-11-16T16:00:00Z",
+    counter_at_the_start: "10234",
+    counter_at_the_end: "10324",
+    vehicle_type: "Truck",
+    volman: "John Doe",
+  },
+  {
+    shift_number: "002",
+    start_date: "2024-11-16T16:00:00Z",
+    end_date: "2024-11-16T00:00:00Z",
+    counter_at_the_start: "10324",
+    counter_at_the_end: "10476",
+    vehicle_type: "Van",
+    volman: "Jane Smith",
+  },
+  {
+    shift_number: "003",
+    start_date: "2024-11-17T08:00:00Z",
+    end_date: "2024-11-17T16:00:00Z",
+    counter_at_the_start: "10476",
+    counter_at_the_end: "10560",
+    vehicle_type: "SUV",
+    volman: "Mike Johnson",
+  },
+  {
+    shift_number: "004",
+    start_date: "2024-11-17T16:00:00Z",
+    end_date: "2024-11-17T00:00:00Z",
+    counter_at_the_start: "10560",
+    counter_at_the_end: "10630",
+    vehicle_type: "Car",
+    volman: "Emily Davis",
+  },
+  {
+    shift_number: "005",
+    start_date: "2024-11-18T08:00:00Z",
+    end_date: "2024-11-18T16:00:00Z",
+    counter_at_the_start: "10630",
+    counter_at_the_end: "10700",
+    vehicle_type: "Truck",
+    volman: "Chris Brown",
+  },
+  {
+    shift_number: "006",
+    start_date: "2024-11-18T16:00:00Z",
+    end_date: "2024-11-18T00:00:00Z",
+    counter_at_the_start: "10700",
+    counter_at_the_end: "10785",
+    vehicle_type: "Van",
+    volman: "Laura Wilson",
+  },
+  {
+    shift_number: "007",
+    start_date: "2024-11-19T08:00:00Z",
+    end_date: "2024-11-19T16:00:00Z",
+    counter_at_the_start: "10785",
+    counter_at_the_end: "10850",
+    vehicle_type: "SUV",
+    volman: "David Garcia",
+  },
+  {
+    shift_number: "008",
+    start_date: "2024-11-19T16:00:00Z",
+    end_date: "2024-11-19T00:00:00Z",
+    counter_at_the_start: "10850",
+    counter_at_the_end: "10920",
+    vehicle_type: "Car",
+    volman: "Sophia Martinez",
+  },
+  {
+    shift_number: "009",
+    start_date: "2024-11-20T08:00:00Z",
+    end_date: "2024-11-20T16:00:00Z",
+    counter_at_the_start: "10920",
+    counter_at_the_end: "10995",
+    vehicle_type: "Truck",
+    volman: "Daniel Taylor",
+  },
+  {
+    shift_number: "010",
+    start_date: "2024-11-20T16:00:00Z",
+    end_date: "2024-11-20T00:00:00Z",
+    counter_at_the_start: "10995",
+    counter_at_the_end: "11080",
+    vehicle_type: "Van",
+    volman: "Olivia Moore",
   },
 ];

@@ -269,7 +269,7 @@ const RTable: React.FC<RTableProps> = ({
 
   return (
     <div
-      className={`rounded-md border w-full`}
+      className={`rounded-md border w-full max-md:overflow-auto max-md:max-w-[700px]`}
       style={{ position: "relative", height: loading ? "320px" : "" }}
     >
       {loading && (

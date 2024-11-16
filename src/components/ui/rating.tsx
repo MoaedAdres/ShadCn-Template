@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Star } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 const ratingVariants = {
   default: {
@@ -43,7 +44,7 @@ export const CommentRatings = ({
   const [hoverRating, setHoverRating] = useState<number | null>(null);
   const [currentRating, setCurrentRating] = useState(initialRating);
   const [isHovering, setIsHovering] = useState(false);
-
+  const { t } = useTranslation();
   const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) return;
     setIsHovering(true);
@@ -116,7 +117,7 @@ export const CommentRatings = ({
         )}
       </div>
       <span className="text-muted-foreground">
-        Current Rating: {`${currentRating}`}
+        {t("current_rating")} : {`${currentRating}`}
       </span>
     </div>
   );

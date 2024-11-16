@@ -149,7 +149,7 @@ export type TableRecords = {
 
 export type RTableProps = {
   Records: TableRecords;
-  containerClassName?: string;
+  tableContainerClassName?: string;
   emptyData?: string | React.ReactNode;
   callBack?: (table: any) => void;
   finishedOperation?: string | null;
@@ -240,3 +240,13 @@ export type RPopoverProps = {
   contentClassName?: string;
   isOpen?: boolean;
 };
+
+export type RPaginationProps = {
+  totalPages: number;
+  currentPage: number;
+  onPageChange?: (page: number) => void;
+  paginationContainerClassName?: string;
+  paginationContentClassName?: string;
+};
+
+export type RPaginateTableProps = RTableProps & RPaginationProps;
