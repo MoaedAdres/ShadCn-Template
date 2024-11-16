@@ -1,7 +1,11 @@
 import { SidebarItemType } from "@/constants/constant";
 import { CellContext, HeaderContext } from "@tanstack/react-table";
 import { LucideIcon } from "lucide-react";
-import { InputHTMLAttributes, MouseEventHandler, ReactNode } from "react";
+import React, {
+  InputHTMLAttributes,
+  MouseEventHandler,
+  ReactNode,
+} from "react";
 import { RouteObject } from "react-router-dom";
 
 export type CustomRoute = RouteObject & {
@@ -250,3 +254,39 @@ export type RPaginationProps = {
 };
 
 export type RPaginateTableProps = RTableProps & RPaginationProps;
+
+export type RCardProps = {
+  title?: string;
+  description?: string;
+  contentComponent: ReactNode;
+  contentClassName?: string;
+  headerClassName?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
+  cardClassName?: string;
+  footerClassName?: string;
+  footerComponent?: ReactNode;
+};
+export type RFlippingCardProps = {
+  flipCardClassName?: string;
+  frontTitle?: string;
+  frontDescription?: string;
+  frontContentComponent: ReactNode;
+  frontContentClassName?: string;
+  frontHeaderClassName?: string;
+  frontTitleClassName?: string;
+  frontDescriptionClassName?: string;
+  frontCardClassName?: string;
+  frontFooterClassName?: string;
+  frontFooterComponent?: ReactNode;
+  backTitle?: string;
+  backDescription?: string;
+  backContentComponent: ReactNode;
+  backContentClassName?: string;
+  backHeaderClassName?: string;
+  backTitleClassName?: string;
+  backDescriptionClassName?: string;
+  backCardClassName?: string;
+  backFooterClassName?: string;
+  backFooterComponent?: ReactNode;
+};

@@ -1,4 +1,5 @@
 import { useIsMobile } from "@/hooks/use-mobile";
+import RCard from "@/RComponents/RCard";
 import RFlex from "@/RComponents/RFlex";
 import RPaginateTable from "@/RComponents/RPaginateTable";
 import RSearchInput from "@/RComponents/RSearchInput";
@@ -147,31 +148,39 @@ const DriverTrips = () => {
   );
 
   return (
-    <div className="flex flex-col gap-4 w-full bg-background shadow-[0px_0px_5px_2px_hsl(var(--foreground)/0.1)] rounded-2xl p-6">
-      <span className="flex gap-1 items-center">
-        {t("driver_trips")}
-        <div className="flex justify-center items-center rounded-full text-[10px] mt-1 bg-muted w-4 h-4">
-          {trips.length}
-        </div>
-      </span>
-      <RFlex className="gap-2">
-        <RSearchInput
-          searchData={searchData}
-          className="w-[350px]"
-          handleSearchClicked={handleSearchClicked}
-          handleDataChanged={(data) => setSearchData(data)}
-          placeholder="order_number,customer_name,shift_number"
-        />
-        <RFlex className="items-center"></RFlex>
-      </RFlex>
-      <RPaginateTable
-        Records={records}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-        totalPages={totalPages}
-        paginationContainerClassName="justify-end"
-      />
-    </div>
+    <RCard
+      contentClassName="flex flex-col gap-4 pt-6"
+      contentComponent={
+        <>
+          <span className="flex gap-1 items-center">
+            {t("driver_trips")}
+            <div className="flex justify-center items-center rounded-full text-[10px] mt-1 bg-muted w-4 h-4">
+              {trips.length}
+            </div>
+          </span>
+          <RFlex className="gap-2">
+            <RSearchInput
+              searchData={searchData}
+              className="w-[350px]"
+              handleSearchClicked={handleSearchClicked}
+              handleDataChanged={(data) => setSearchData(data)}
+              placeholder="order_number,customer_name,shift_number"
+            />
+            <RFlex className="items-center"></RFlex>
+          </RFlex>
+          <RPaginateTable
+            Records={records}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            totalPages={totalPages}
+            paginationContainerClassName="justify-end"
+          />
+        </>
+      }
+    />
+    // <div className="flex flex-col gap-4 w-full bg-background shadow-[0px_0px_5px_2px_hsl(var(--foreground)/0.1)] rounded-2xl p-6">
+
+    // </div>
   );
 };
 

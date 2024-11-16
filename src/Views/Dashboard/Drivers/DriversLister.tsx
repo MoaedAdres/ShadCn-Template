@@ -202,7 +202,13 @@ const DriversLister = () => {
           handleDataChanged={(data) => setSearchData(data)}
           placeholder="search_for_name_or_number"
         />
-        <RButton text="join_requests" variant="default" Icon={List} iconRight />
+        <RButton
+          text="join_requests"
+          variant="default"
+          Icon={List}
+          iconRight
+          onClick={() => navigate("join-requests")}
+        />
       </RFlex>
 
       <RTable Records={records} />

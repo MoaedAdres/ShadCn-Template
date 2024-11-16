@@ -37,5 +37,6 @@
   "end_date": "End date",
   "start_counter": "Start counter",
   "end_counter": "End counter",
-  "volman": "Volman"
+  "volman": "Volman",
+  "join-requests":"Join requests"
 }

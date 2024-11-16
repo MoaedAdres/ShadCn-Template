@@ -434,3 +434,106 @@ export const shifts: Shift[] = [
     volman: "Olivia Moore",
   },
 ];
+
+type JoinRequest = {
+  request_date: string;
+  image: string;
+  name: string;
+  phone_number: string;
+  email: string;
+  driver_licenees: string;
+  profeesional_certificate: string;
+};
+
+export const joinRequests: JoinRequest[] = [
+  {
+    request_date: "2024-11-15",
+    image: "https://example.com/images/user1.jpg",
+    name: "John Doe",
+    phone_number: "+1234567890",
+    email: "john.doe@example.com",
+    driver_licenees: "DL123456",
+    profeesional_certificate: "Certified Professional Engineer",
+  },
+  {
+    request_date: "2024-11-14",
+    image: "https://example.com/images/user2.jpg",
+    name: "Jane Smith",
+    phone_number: "+9876543210",
+    email: "jane.smith@example.com",
+    driver_licenees: "DL654321",
+    profeesional_certificate: "Chartered Accountant",
+  },
+  {
+    request_date: "2024-11-13",
+    image: "https://example.com/images/user3.jpg",
+    name: "Robert Brown",
+    phone_number: "+1928374650",
+    email: "robert.brown@example.com",
+    driver_licenees: "DL789123",
+    profeesional_certificate: "Licensed Architect",
+  },
+  {
+    request_date: "2024-11-12",
+    image: "https://example.com/images/user4.jpg",
+    name: "Emily Davis",
+    phone_number: "+1765432198",
+    email: "emily.davis@example.com",
+    driver_licenees: "DL456789",
+    profeesional_certificate: "Certified IT Specialist",
+  },
+  {
+    request_date: "2024-11-11",
+    image: "https://example.com/images/user5.jpg",
+    name: "Michael Wilson",
+    phone_number: "+1346578901",
+    email: "michael.wilson@example.com",
+    driver_licenees: "DL112233",
+    profeesional_certificate: "Certified Financial Analyst",
+  },
+  {
+    request_date: "2024-11-10",
+    image: "https://example.com/images/user6.jpg",
+    name: "Sarah Johnson",
+    phone_number: "+1456781234",
+    email: "sarah.johnson@example.com",
+    driver_licenees: "DL223344",
+    profeesional_certificate: "Registered Nurse",
+  },
+  {
+    request_date: "2024-11-09",
+    image: "https://example.com/images/user7.jpg",
+    name: "David Martinez",
+    phone_number: "+1987654321",
+    email: "david.martinez@example.com",
+    driver_licenees: "DL334455",
+    profeesional_certificate: "Certified Data Scientist",
+  },
+  {
+    request_date: "2024-11-08",
+    image: "https://example.com/images/user8.jpg",
+    name: "Laura Garcia",
+    phone_number: "+1123456789",
+    email: "laura.garcia@example.com",
+    driver_licenees: "DL445566",
+    profeesional_certificate: "Licensed Electrician",
+  },
+  {
+    request_date: "2024-11-07",
+    image: "https://example.com/images/user9.jpg",
+    name: "James Anderson",
+    phone_number: "+1987651234",
+    email: "james.anderson@example.com",
+    driver_licenees: "DL556677",
+    profeesional_certificate: "Certified Project Manager",
+  },
+  {
+    request_date: "2024-11-06",
+    image: "https://example.com/images/user10.jpg",
+    name: "Sophia Thomas",
+    phone_number: "+1678901234",
+    email: "sophia.thomas@example.com",
+    driver_licenees: "DL667788",
+    profeesional_certificate: "Certified Legal Consultant",
+  },
+];
