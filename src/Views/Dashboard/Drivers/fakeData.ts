@@ -435,105 +435,168 @@ export const shifts: Shift[] = [
   },
 ];
 
-type JoinRequest = {
+export type JoinRequest = {
   request_date: string;
   image: string;
   name: string;
   phone_number: string;
   email: string;
   driver_licenees: string;
+  driver_licenees_url: string;
   profeesional_certificate: string;
+  profeesional_certificate_url: string;
+  location: string;
 };
 
 export const joinRequests: JoinRequest[] = [
   {
     request_date: "2024-11-15",
-    image: "https://example.com/images/user1.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "John Doe",
     phone_number: "+1234567890",
     email: "john.doe@example.com",
     driver_licenees: "DL123456",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Certified Professional Engineer",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "New York, USA",
   },
   {
     request_date: "2024-11-14",
-    image: "https://example.com/images/user2.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "Jane Smith",
     phone_number: "+9876543210",
     email: "jane.smith@example.com",
     driver_licenees: "DL654321",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Chartered Accountant",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "London, UK",
   },
   {
     request_date: "2024-11-13",
-    image: "https://example.com/images/user3.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "Robert Brown",
     phone_number: "+1928374650",
     email: "robert.brown@example.com",
     driver_licenees: "DL789123",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Licensed Architect",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "Toronto, Canada",
   },
   {
     request_date: "2024-11-12",
-    image: "https://example.com/images/user4.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "Emily Davis",
     phone_number: "+1765432198",
     email: "emily.davis@example.com",
     driver_licenees: "DL456789",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Certified IT Specialist",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "Sydney, Australia",
   },
   {
     request_date: "2024-11-11",
-    image: "https://example.com/images/user5.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "Michael Wilson",
     phone_number: "+1346578901",
     email: "michael.wilson@example.com",
     driver_licenees: "DL112233",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Certified Financial Analyst",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "San Francisco, USA",
   },
   {
     request_date: "2024-11-10",
-    image: "https://example.com/images/user6.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "Sarah Johnson",
     phone_number: "+1456781234",
     email: "sarah.johnson@example.com",
     driver_licenees: "DL223344",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Registered Nurse",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "Paris, France",
   },
   {
     request_date: "2024-11-09",
-    image: "https://example.com/images/user7.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "David Martinez",
     phone_number: "+1987654321",
     email: "david.martinez@example.com",
     driver_licenees: "DL334455",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Certified Data Scientist",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "Berlin, Germany",
   },
   {
     request_date: "2024-11-08",
-    image: "https://example.com/images/user8.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "Laura Garcia",
     phone_number: "+1123456789",
     email: "laura.garcia@example.com",
     driver_licenees: "DL445566",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Licensed Electrician",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "Madrid, Spain",
   },
   {
     request_date: "2024-11-07",
-    image: "https://example.com/images/user9.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "James Anderson",
     phone_number: "+1987651234",
     email: "james.anderson@example.com",
     driver_licenees: "DL556677",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Certified Project Manager",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "Dubai, UAE",
   },
   {
     request_date: "2024-11-06",
-    image: "https://example.com/images/user10.jpg",
+    image:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     name: "Sophia Thomas",
     phone_number: "+1678901234",
     email: "sophia.thomas@example.com",
     driver_licenees: "DL667788",
+    driver_licenees_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     profeesional_certificate: "Certified Legal Consultant",
+    profeesional_certificate_url:
+      "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+    location: "Singapore",
   },
 ];

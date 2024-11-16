@@ -1,9 +1,10 @@
 import { SidebarItemType } from "@/constants/constant";
 import { CellContext, HeaderContext } from "@tanstack/react-table";
-import { LucideIcon } from "lucide-react";
+import { IconNode, LucideIcon } from "lucide-react";
 import React, {
   InputHTMLAttributes,
   MouseEventHandler,
+  ReactElement,
   ReactNode,
 } from "react";
 import { RouteObject } from "react-router-dom";
@@ -193,7 +194,7 @@ export type RButtonProps = {
   loading?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   hidden?: boolean;
-  Icon?: LucideIcon;
+  Icon?: any;
   text?: string;
   type?: "button" | "submit" | "reset";
   key?: React.Key;

@@ -21,7 +21,7 @@ const RCard = ({
 }: RCardProps) => {
   return (
     <Card id="card" className={cardClassName}>
-      {title && description && (
+      {title || description && (
         <CardHeader id="card header" className={headerClassName}>
           {title && <CardTitle className={titleClassName}>{title}</CardTitle>}
           {description && (
