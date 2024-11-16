@@ -23,10 +23,10 @@ const RFlippingCard = ({
   backCardClassName,
   backFooterClassName,
   backFooterComponent,
-  flipCardClassName = "h-[275px] w-[24%]",
+  flipCardClassName="h-[275px] w-[24%]"
 }: RFlippingCardProps) => {
   return (
-    <div className={cn(flipCardClassName, styles.flipCard)}>
+    <div className={cn(flipCardClassName,styles.flipCard)}>
       <div className={`${styles.flipCardInner}`}>
         <RCard
           cardClassName={cn(styles.flipCardFront, frontCardClassName)}

@@ -39,9 +39,9 @@ const JoinRequests = () => {
         <RFlex className="flex-col h-full gap-2">
           <span className="flex gap-1 item-center text-[18px] font-bold">
             <User />
-            {name}
+            {name} The First
           </span>
-          <span className="flex gap-1 item-center flex-wrap max-w-max">
+          <span className="flex gap-1 item-center ">
             <Mail />
             {email}
           </span>
@@ -100,7 +100,7 @@ const JoinRequests = () => {
       {joinRequests.map((request: JoinRequest) => (
         <RFlex className="flex-col gap-2">
           <RFlippingCard
-            flipCardClassName="w-full h-[275px]"
+            flipCardClassName="w-full min-h-[275px]"
             frontContentComponent={frontContent(request)}
             frontContentClassName="p-4 relative"
             backContentClassName="p-4 relative"
