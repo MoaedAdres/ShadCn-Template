@@ -1,4 +1,4 @@
-import { CommentRatings } from "@/components/ui/rating";
+import { Rating } from "@/components/ui/rating";
 import { Separator } from "@/components/ui/separator";
 import RFlex from "@/RComponents/RFlex";
 import { driver } from "@/Views/Dashboard/Drivers/fakeData";
@@ -49,7 +49,7 @@ const DriverPersonalInfo = () => {
                 <Calendar className="w-3 h-3" />
                 {driver.join_date}
               </span>
-              <CommentRatings rating={4.5} disabled />
+              <Rating rating={4.5} disabled />
               {driver.active ? (
                 <p className="flex gap-1   items-center ">
                   <span className="text-green-800">{t("online")} </span>

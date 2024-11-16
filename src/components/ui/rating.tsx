@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { Star } from "lucide-react";
-
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"; // Assuming this is a utility for class merging
 import { useTranslation } from "react-i18next";
 
+// Rating variants with disabled styles
 const ratingVariants = {
   default: {
     star: "text-foreground",
     emptyStar: "text-muted-foreground",
+    disabled: "opacity-50 cursor-not-allowed",
   },
   destructive: {
     star: "text-red-500",
     emptyStar: "text-red-200",
+    disabled: "opacity-50 cursor-not-allowed",
   },
   yellow: {
     star: "text-yellow-500",
     emptyStar: "text-yellow-200",
+    disabled: "opacity-50 cursor-not-allowed",
   },
 };
 
@@ -30,7 +33,7 @@ interface RatingsProps extends React.HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
 }
 
-export const CommentRatings = ({
+export const Rating = ({
   rating: initialRating,
   totalStars = 5,
   size = 20,
@@ -43,11 +46,10 @@ export const CommentRatings = ({
 }: RatingsProps) => {
   const [hoverRating, setHoverRating] = useState<number | null>(null);
   const [currentRating, setCurrentRating] = useState(initialRating);
-  const [isHovering, setIsHovering] = useState(false);
   const { t } = useTranslation();
+
   const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) return;
-    setIsHovering(true);
     const starIndex = parseInt(
       (event.currentTarget as HTMLDivElement).dataset.starIndex || "0"
     );
@@ -56,7 +58,6 @@ export const CommentRatings = ({
 
   const handleMouseLeave = () => {
     if (disabled) return;
-    setIsHovering(false);
     setHoverRating(null);
   };
 
@@ -66,7 +67,6 @@ export const CommentRatings = ({
       (event.currentTarget as HTMLDivElement).dataset.starIndex || "0"
     );
     setCurrentRating(starIndex);
-    setHoverRating(null);
     onRatingChange?.(starIndex);
   };
 
@@ -84,11 +84,14 @@ export const CommentRatings = ({
 
   return (
     <div
-      className={cn("flex w-fit items-center gap-2 ")}
+      className={cn(
+        "flex w-fit items-center gap-2",
+        disabled && ratingVariants[variant].disabled
+      )}
       onMouseLeave={handleMouseLeave}
       {...props}
     >
-      <div className="flex items-center" onMouseEnter={handleMouseEnter}>
+      <div className="flex items-center">
         {[...Array(fullStars)].map((_, i) =>
           React.cloneElement(Icon, {
             key: i,
@@ -130,8 +133,12 @@ interface PartialStarProps {
   Icon: React.ReactElement;
 }
 
-const PartialStar = ({ ...props }: PartialStarProps) => {
-  const { fillPercentage, size, className, Icon } = props;
+const PartialStar = ({
+  fillPercentage,
+  size,
+  className,
+  Icon,
+}: PartialStarProps) => {
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
       {React.cloneElement(Icon, {
