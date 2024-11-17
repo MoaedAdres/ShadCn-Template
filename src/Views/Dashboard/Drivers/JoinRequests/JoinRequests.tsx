@@ -1,16 +1,11 @@
 import RButton from "@/RComponents/RButton";
 import RFlex from "@/RComponents/RFlex";
 import RFlippingCard from "@/RComponents/RFlippingCard/RFlippingCard";
-import RSearchInput from "@/RComponents/RSearchInput";
-import {
-  JoinRequest,
-  joinRequests,
-  trips,
-} from "@/Views/Dashboard/Drivers/fakeData";
+import { JoinRequest, joinRequests } from "@/Views/Dashboard/Drivers/fakeData";
+import DateFilter from "@/Views/Dashboard/Drivers/Shared/DateFilter";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import {
   Check,
-  Cross,
   Mail,
   MapPin,
   Newspaper,
@@ -18,12 +13,12 @@ import {
   ScrollText,
   User,
 } from "lucide-react";
-import React from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const JoinRequests = () => {
   const { t } = useTranslation();
-
+  const [backChecked, setBackChecked] = useState<boolean>(false);
   const frontContent = ({
     name,
     image,
@@ -33,13 +28,13 @@ const JoinRequests = () => {
     location,
   }: JoinRequest) => {
     return (
-      <RFlex className="flex-col gap-3 text-foreground/80 h-full">
+      <RFlex className="flex-col gap-3 text-card-foreground/80 h-full">
         <span className="absolute top-0 right-2 ">{request_date}</span>
         <img src={image} className=" w-16 h-16 rounded-full" />
         <RFlex className="flex-col h-full gap-2">
           <span className="flex gap-1 item-center text-[18px] font-bold">
             <User />
-            {name} The First
+            {name}
           </span>
           <span className="flex gap-1 item-center ">
             <Mail />
@@ -65,7 +60,7 @@ const JoinRequests = () => {
     request_date,
   }: JoinRequest) => {
     return (
-      <RFlex className="flex-col gap-3 text-foreground/80 h-full">
+      <RFlex className="flex-col gap-3 text-card-foreground/80 h-full">
         <span className="absolute top-0 right-2">{request_date}</span>
         <span className="text-[18px] font-bold">{t("documents")}:</span>
         <RFlex className="flex-col h-full gap-2 text-[14px]">
@@ -96,36 +91,44 @@ const JoinRequests = () => {
     );
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
-      {joinRequests.map((request: JoinRequest) => (
-        <RFlex className="flex-col gap-2">
-          <RFlippingCard
-            flipCardClassName="w-full min-h-[275px]"
-            frontContentComponent={frontContent(request)}
-            frontContentClassName="p-4 relative"
-            backContentClassName="p-4 relative"
-            backContentComponent={backcontent(request)}
-            backCardClassName="justify-between flex flex-col"
-            backFooterComponent={
-              <RFlex className="w-full gap-10 justify-center px-5">
-                <RButton
-                  text="reject"
-                  Icon={Cross1Icon}
-                  variant="destructive"
-                  size="sm"
-                />
-                <RButton
-                  text="accept"
-                  Icon={Check}
-                  className="bg-green-600 hover:bg-green-600/80"
-                  size="sm"
-                />
-              </RFlex>
-            }
-          />
-        </RFlex>
-      ))}
-    </div>
+    <RFlex className="flex-col gap-2">
+      <DateFilter
+        backChecked={backChecked}
+        setBackChecked={setBackChecked}
+        triggerClassName="w-6 h-6"
+        orentation="horizontal"
+      />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
+        {joinRequests.map((request: JoinRequest) => (
+          <RFlex className="flex-col gap-2">
+            <RFlippingCard
+              flipCardClassName="w-full min-h-[275px]"
+              frontContentComponent={frontContent(request)}
+              frontContentClassName="p-4 relative"
+              backContentClassName="p-4 relative"
+              backContentComponent={backcontent(request)}
+              backCardClassName="justify-between flex flex-col"
+              backFooterComponent={
+                <RFlex className="w-full gap-10 justify-center px-5">
+                  <RButton
+                    text="reject"
+                    Icon={Cross1Icon}
+                    variant="destructive"
+                    size="sm"
+                  />
+                  <RButton
+                    text="accept"
+                    Icon={Check}
+                    className="bg-green-600 hover:bg-green-600/80"
+                    size="sm"
+                  />
+                </RFlex>
+              }
+            />
+          </RFlex>
+        ))}
+      </div>
+    </RFlex>
   );
 };
 

@@ -3,7 +3,7 @@ import DriverPersonalInfo from "@/Views/Dashboard/Drivers/DriverProfile/DriverPe
 import DriverShifts from "@/Views/Dashboard/Drivers/DriverProfile/DriverShifts";
 import DriverTrips from "@/Views/Dashboard/Drivers/DriverProfile/DriverTrips";
 
-const DriverDetails = () => {
+const DriverProfile = () => {
   return (
     <RFlex className="flex-col gap-[20px]">
       <DriverPersonalInfo />
@@ -13,4 +13,4 @@ const DriverDetails = () => {
   );
 };
 
-export default DriverDetails;
+export default DriverProfile;

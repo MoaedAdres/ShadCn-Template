@@ -1,5 +1,5 @@
 import { CustomRoute } from "@/types/index.type";
-import DriverDetails from "@/Views/Dashboard/Drivers/DriverProfile/DriverProfile";
+import DriverProfile from "@/Views/Dashboard/Drivers/DriverProfile/DriverProfile";
 import DriversLister from "@/Views/Dashboard/Drivers/DriversLister";
 import JoinRequests from "@/Views/Dashboard/Drivers/JoinRequests/JoinRequests";
 
@@ -13,12 +13,7 @@ export const dashboardRoutes: CustomRoute[] = [
   {
     path: "drivers/:driver",
     breadcrumb: "Driver Details",
-    Component: DriverDetails,
-  },
-  {
-    path: "drivers/:driver",
-    breadcrumb: "Driver Details",
-    Component: DriverDetails,
+    Component: DriverProfile,
   },
   {
     path: "drivers/join-requests",

@@ -14,9 +14,11 @@ const RPopover = ({
   triggerClassName,
   contentComponent,
   contentClassName,
+  isOpen,
+  onOpenChange,
 }: RPopoverProps) => {
   return (
-    <Popover>
+    <Popover open={isOpen} onOpenChange={onOpenChange}>
       <PopoverTrigger
         className={cn("cursor-pointer", triggerClassName)}
         asChild

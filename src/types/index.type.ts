@@ -244,6 +244,7 @@ export type RPopoverProps = {
   contentComponent: ReactNode;
   contentClassName?: string;
   isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
 };
 
 export type RPaginationProps = {
