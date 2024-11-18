@@ -13,7 +13,7 @@ import {
   TableRecords,
 } from "@/types/index.type";
 import { drivers } from "@/Views/Dashboard/Drivers/fakeData";
-import { Filter, Info, List, Rocket, Trash, View } from "lucide-react";
+import { Filter, Info, List, Plus, Rocket, Trash, View } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -96,8 +96,9 @@ const DriversLister = () => {
                   </Button>
                 }
                 // KeepActiveItemChecked
+                closeOnSelect={false}
                 side="bottom"
-                align="start"
+                align="center"
                 actions={onlineActions}
                 setActions={setOnlineActions}
               />

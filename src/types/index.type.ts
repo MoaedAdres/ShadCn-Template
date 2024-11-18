@@ -57,6 +57,8 @@ export type RCheckDropdownProps = {
   KeepActiveItemChecked?: boolean;
   side?: "bottom" | "right" | "top" | "left";
   align?: "center" | "end" | "start";
+  closeOnSelect?: boolean;
+  additionalComponent?: ReactNode;
 };
 
 export type SidebarContentProps = {

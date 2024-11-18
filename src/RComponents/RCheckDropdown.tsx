@@ -28,6 +28,8 @@ const RCheckDropdown: React.FC<RCheckDropdownProps> = ({
   KeepActiveItemChecked,
   align,
   side,
+  closeOnSelect = true,
+  additionalComponent,
 }) => {
   const { isMobile } = useSidebar();
 
@@ -54,6 +56,9 @@ const RCheckDropdown: React.FC<RCheckDropdownProps> = ({
             <DropdownMenuCheckboxItem
               className={itemClassName}
               checked={actions[key].checked}
+              onSelect={(event) => {
+                closeOnSelect ? "" : event.preventDefault();
+              }}
               onCheckedChange={() => {
                 actions[key].onCheckedChange(actions[key].checked);
                 if (setActions) {
@@ -108,6 +113,7 @@ const RCheckDropdown: React.FC<RCheckDropdownProps> = ({
             {actions[key].addSeparator && <DropdownMenuSeparator />}
           </React.Fragment>
         ))}
+        {additionalComponent && additionalComponent}
       </DropdownMenuContent>
     </DropdownMenu>
   );
