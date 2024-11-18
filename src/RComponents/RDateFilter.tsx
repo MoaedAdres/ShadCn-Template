@@ -15,7 +15,7 @@ import {
 import React, { Dispatch, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const DateFilter = ({
+const RDateFilter = ({
   backChecked,
   setBackChecked,
   triggerClassName,
@@ -32,7 +32,7 @@ const DateFilter = ({
   const currenOorentation = isMobile ? "vertical" : orentation;
   return (
     <RPopover
-      triggerComponent={<Filter className={cn("w-3 h-3", triggerClassName)} />}
+      triggerComponent={<Filter className={cn("w-4 h-4", triggerClassName)} />}
       contentClassName="w-fit"
       contentComponent={
         <RFlex className="flex-col">
@@ -75,4 +75,4 @@ const DateFilter = ({
   );
 };
 
-export default DateFilter;
+export default RDateFilter;

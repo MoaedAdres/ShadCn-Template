@@ -1,4 +1,4 @@
-html[data-theme="theme-green-1"] {
+html[data-theme="green 1"] {
   --background: 130 15% 95%; /* Light Green */
   --foreground: 130 10% 20%; /* Dark Green */
   --card: 130 10% 95%; /* Light Green */

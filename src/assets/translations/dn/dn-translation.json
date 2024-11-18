@@ -37,5 +37,8 @@
   "end_date": "Slutdato",
   "start_counter": "Start tæller",
   "end_counter": "Slut tæller",
-  "volman": "Volman"
+  "volman": "Volman",
+  "all_drivers": "All drivers",
+  "customers": "Customers",
+  "date_of_birth": "Date of birth"
 }

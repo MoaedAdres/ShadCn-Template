@@ -1,8 +1,8 @@
 import RButton from "@/RComponents/RButton";
 import RFlex from "@/RComponents/RFlex";
 import RFlippingCard from "@/RComponents/RFlippingCard/RFlippingCard";
-import { JoinRequest, joinRequests } from "@/Views/Dashboard/Drivers/fakeData";
-import DateFilter from "@/Views/Dashboard/Drivers/Shared/DateFilter";
+import { JoinRequest, joinRequests } from "@/Views/Dashboard/Drivers/driversFakeData";
+import RDateFilter from "@/RComponents/RDateFilter";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import {
   Check,
@@ -92,7 +92,7 @@ const JoinRequests = () => {
   };
   return (
     <RFlex className="flex-col gap-2">
-      <DateFilter
+      <RDateFilter
         backChecked={backChecked}
         setBackChecked={setBackChecked}
         triggerClassName="w-6 h-6"

@@ -1,7 +1,7 @@
 import { Rating } from "@/components/ui/rating";
 import RCard from "@/RComponents/RCard";
 import RFlex from "@/RComponents/RFlex";
-import { driver } from "@/Views/Dashboard/Drivers/fakeData";
+import { driver } from "@/Views/Dashboard/Drivers/driversFakeData";
 import {
   Calendar,
   Mail,

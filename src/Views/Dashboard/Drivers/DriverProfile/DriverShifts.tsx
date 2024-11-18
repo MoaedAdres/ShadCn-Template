@@ -3,7 +3,7 @@ import RFlex from "@/RComponents/RFlex";
 import RPaginateTable from "@/RComponents/RPaginateTable";
 import RSearchInput from "@/RComponents/RSearchInput";
 import { CustomColumn } from "@/types/index.type";
-import { shifts } from "@/Views/Dashboard/Drivers/fakeData";
+import { shifts } from "@/Views/Dashboard/Drivers/driversFakeData";
 import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 

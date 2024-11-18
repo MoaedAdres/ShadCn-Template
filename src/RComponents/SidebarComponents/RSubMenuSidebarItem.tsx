@@ -36,7 +36,6 @@ const RSubMenuSidebarItem = ({
           <span>{t(title)}</span>
         </SidebarMenuSubButton>
       )}
-      {Icon && <Icon />}
     </SidebarMenuSubItem>
   );
 };

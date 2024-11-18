@@ -38,5 +38,8 @@
   "start_counter": "Start counter",
   "end_counter": "End counter",
   "volman": "Volman",
-  "join-requests":"Join requests"
+  "join-requests": "Join requests",
+  "all_drivers": "All drivers",
+  "customers":"Customers",
+  "date_of_birth":"Date of birth"
 }

@@ -12,6 +12,7 @@ import {
 import { RDropdownProps } from "@/types/index.type";
 import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 const RDropdown: React.FC<RDropdownProps> = ({
   triggerComponent = null,
@@ -23,6 +24,7 @@ const RDropdown: React.FC<RDropdownProps> = ({
   align,
   side,
 }) => {
+  const { t } = useTranslation();
   const { isMobile } = useSidebar();
   return (
     <DropdownMenu>
@@ -66,7 +68,7 @@ const RDropdown: React.FC<RDropdownProps> = ({
                     <action.Icon className={action.actionIconClass} />
                   )}
                   <span className={`${action.actionTextClass} cursor-pointer`}>
-                    {action.name}
+                    {t(action.name)}
                   </span>
                   {action.Icon && action.iconOnRight && (
                     <action.Icon className={action.actionIconClass} />

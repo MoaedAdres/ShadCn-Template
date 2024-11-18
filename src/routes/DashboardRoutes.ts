@@ -1,4 +1,5 @@
 import { CustomRoute } from "@/types/index.type";
+import CustomersLister from "@/Views/Dashboard/Customers/CustomersLister";
 import DriverProfile from "@/Views/Dashboard/Drivers/DriverProfile/DriverProfile";
 import DriversLister from "@/Views/Dashboard/Drivers/DriversLister";
 import JoinRequests from "@/Views/Dashboard/Drivers/JoinRequests/JoinRequests";
@@ -6,18 +7,23 @@ import JoinRequests from "@/Views/Dashboard/Drivers/JoinRequests/JoinRequests";
 export const dashboardRoutes: CustomRoute[] = [
   {
     path: "drivers",
-    breadcrumb: "Drivers",
     Component: DriversLister,
     // routes: [{ path: ":userId", Component: Test }],
   },
   {
     path: "drivers/:driver",
-    breadcrumb: "Driver Details",
     Component: DriverProfile,
   },
   {
     path: "drivers/join-requests",
-    breadcrumb: "join-requests",
     Component: JoinRequests,
+  },
+  {
+    path: "join-requests",
+    Component: JoinRequests,
+  },
+  {
+    path: "customers",
+    Component: CustomersLister,
   },
 ];

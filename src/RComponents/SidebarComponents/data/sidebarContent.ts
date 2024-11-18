@@ -1,6 +1,6 @@
 import { SidebarItemType } from "@/constants/constant";
 import { SidebarContentProps } from "@/types/index.type";
-import { Car, Users2 } from "lucide-react";
+import { Car, Handshake, List, Users2 } from "lucide-react";
 export const sidebarContent: SidebarContentProps[] = [
   {
     type: SidebarItemType.CONTENT,
@@ -9,24 +9,40 @@ export const sidebarContent: SidebarContentProps[] = [
       title: "Menu",
       items: [
         {
-          type: SidebarItemType.NORMAL_MENU,
+          type: SidebarItemType.COLLAPSE_MENU,
           title: "drivers",
           items: [
             {
-              type: SidebarItemType.NORMAL_ITEM,
+              type: SidebarItemType.COLLAPSE_ITEM,
               Icon: Users2,
+              childPaths: ["drivers", "join-requests"],
               title: "drivers", // Optional title for menu
-              // items: [],
-              path: "drivers",
-              actions: [{ name: "Create_Driver" }],
+              items: [
+                {
+                  title: "drivers1",
+                  type: SidebarItemType.SUB_MENU,
+                  items: [
+                    {
+                      type: SidebarItemType.SUB_ITEM,
+                      title: "all_drivers",
+                      Icon: Users2,
+                      path: "drivers",
+                    },
+                    {
+                      type: SidebarItemType.SUB_ITEM,
+                      title: "join_requests",
+                      Icon: List,
+                      path: "join-requests",
+                    },
+                  ],
+                },
+              ],
             },
             {
               type: SidebarItemType.NORMAL_ITEM,
-              Icon: Car,
-              title: "cars", // Optional title for menu
-              // items: [],
-              path: "cars",
-              // actions: [{ name: "Create_Driver" }],
+              Icon: Handshake,
+              title: "customers",
+              path: "customers",
             },
           ],
         },

@@ -4,8 +4,8 @@ import RFlex from "@/RComponents/RFlex";
 import RPaginateTable from "@/RComponents/RPaginateTable";
 import RSearchInput from "@/RComponents/RSearchInput";
 import { CustomColumn } from "@/types/index.type";
-import DateFilter from "@/Views/Dashboard/Drivers/Shared/DateFilter";
-import { trips } from "@/Views/Dashboard/Drivers/fakeData";
+import RDateFilter from "@/RComponents/RDateFilter";
+import { trips } from "@/Views/Dashboard/Drivers/driversFakeData";
 import { ArrowBigDown, ArrowBigRight } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -115,7 +115,7 @@ const DriverTrips = () => {
           return (
             <RFlex className="gap-2 items-center">
               <span>{t("date")}</span>
-              <DateFilter
+              <RDateFilter
                 backChecked={backChecked}
                 setBackChecked={setBackChecked}
               />

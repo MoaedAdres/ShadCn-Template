@@ -12,6 +12,7 @@ import {
 import { CheckActionItem, RCheckDropdownProps } from "@/types/index.type";
 import { cn } from "@/lib/utils";
 import { useSidebar } from "@/components/ui/sidebar";
+import { useTranslation } from "react-i18next";
 
 // Define the structure of each action item
 
@@ -32,7 +33,7 @@ const RCheckDropdown: React.FC<RCheckDropdownProps> = ({
   additionalComponent,
 }) => {
   const { isMobile } = useSidebar();
-
+  const { t } = useTranslation();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
@@ -51,68 +52,67 @@ const RCheckDropdown: React.FC<RCheckDropdownProps> = ({
         className={cn("w-24 rounded-lg", contentClassName)}
       >
         {label && <DropdownMenuLabel>{label}</DropdownMenuLabel>}
-        {Object.keys(actions).map((key, index) => (
-          <React.Fragment key={index}>
-            <DropdownMenuCheckboxItem
-              className={itemClassName}
-              checked={actions[key].checked}
-              onSelect={(event) => {
-                closeOnSelect ? "" : event.preventDefault();
-              }}
-              onCheckedChange={() => {
-                actions[key].onCheckedChange(actions[key].checked);
-                if (setActions) {
-                  if (multiFilter) {
-                    setActions((oldActions: any) => ({
-                      ...oldActions,
-                      [key]: {
-                        ...oldActions[key],
-                        checked: !oldActions[key].checked,
-                      },
-                    }));
-                  } else {
-                    setActions((oldActions: any) => {
-                      const newState: { [key: string]: CheckActionItem } = {};
-                      Object.keys(oldActions).forEach((innerKey) => {
-                        newState[innerKey] = {
-                          ...oldActions[innerKey],
-                          checked:
-                            innerKey === key
-                              ? KeepActiveItemChecked
-                                ? true
-                                : !oldActions[innerKey].checked
-                              : false,
-                        };
+        {Object.keys(actions).map((key, index) => {
+          const Icon = actions[key].Icon;
+          return (
+            <React.Fragment key={index}>
+              <DropdownMenuCheckboxItem
+                className={itemClassName}
+                checked={actions[key].checked}
+                onSelect={(event) => {
+                  closeOnSelect ? "" : event.preventDefault();
+                }}
+                onCheckedChange={() => {
+                  actions[key].onCheckedChange(actions[key].checked);
+                  if (setActions) {
+                    if (multiFilter) {
+                      setActions((oldActions: any) => ({
+                        ...oldActions,
+                        [key]: {
+                          ...oldActions[key],
+                          checked: !oldActions[key].checked,
+                        },
+                      }));
+                    } else {
+                      setActions((oldActions: any) => {
+                        const newState: { [key: string]: CheckActionItem } = {};
+                        Object.keys(oldActions).forEach((innerKey) => {
+                          newState[innerKey] = {
+                            ...oldActions[innerKey],
+                            checked:
+                              innerKey === key
+                                ? KeepActiveItemChecked
+                                  ? true
+                                  : !oldActions[innerKey].checked
+                                : false,
+                          };
+                        });
+                        return newState;
                       });
-                      return newState;
-                    });
+                    }
                   }
-                }
-              }}
-            >
-              {actions[key].component ? (
-                actions[key].component
-              ) : (
-                <>
-                  {actions[key].Icon && !actions[key].iconOnRight && (
-                    <i
-                      className={`${actions[key].Icon} ${actions[key].actionIconClass}`}
-                    />
-                  )}
-                  <span className={`${actions[key].actionTextClass}`}>
-                    {actions[key].name}
-                  </span>
-                  {actions[key].Icon && actions[key].iconOnRight && (
-                    <i
-                      className={`${actions[key].Icon} ${actions[key].actionIconClass}`}
-                    />
-                  )}
-                </>
-              )}
-            </DropdownMenuCheckboxItem>
-            {actions[key].addSeparator && <DropdownMenuSeparator />}
-          </React.Fragment>
-        ))}
+                }}
+              >
+                {actions[key].component ? (
+                  actions[key].component
+                ) : (
+                  <>
+                    {Icon && !actions[key].iconOnRight && (
+                      <Icon className={actions[key].actionIconClass} />
+                    )}
+                    <span className={`${actions[key].actionTextClass}`}>
+                      {t(actions[key].name)}
+                    </span>
+                    {Icon && actions[key].iconOnRight && (
+                      <Icon className={actions[key].actionIconClass} />
+                    )}
+                  </>
+                )}
+              </DropdownMenuCheckboxItem>
+              {actions[key].addSeparator && <DropdownMenuSeparator />}
+            </React.Fragment>
+          );
+        })}
         {additionalComponent && additionalComponent}
       </DropdownMenuContent>
     </DropdownMenu>

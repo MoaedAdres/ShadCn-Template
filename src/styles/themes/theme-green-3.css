@@ -1,7 +1,7 @@
-html[data-theme="theme-green-3"] {
+html[data-theme="green 3"] {
   --background: 165, 44%, 4%; /* Dark Blue */
   --foreground: 0, 0%, 100%; /* Bright Green */
-  --card: 356 69% 51%; /* Vivid Pink */
+  --card: 159, 76%, 6%; /* Vivid Pink */
   --card-foreground: 32 30% 76%; /* Deep Blue-Green */
   --popover: 220 5% 12%; /* Dark Blue */
   --popover-foreground: 0 0% 100%; /* Bright Green */
@@ -13,8 +13,8 @@ html[data-theme="theme-green-3"] {
   --muted-foreground: 158, 94%, 28%; /* Bright Green */
   --accent: 158, 96%, 48%; /* Vivid Pink */
   --accent-foreground: 0 0% 100%; /* Bright Green */
-  --destructive: 356 69% 51%; /* Vivid Pink */
-  --destructive-foreground: 119 82% 47%; /* Bright Green */
+  --destructive: 0 62.8% 30.6%; /* Dark Red */
+  --destructive-foreground: 210 40% 98%; /* Almost White Blue */
   --border: 220 5% 12%; /* Dark Blue */
   --input: 220 5% 12%; /* Dark Blue */
   --ring: 158, 94%, 28%; /* Bright Green */

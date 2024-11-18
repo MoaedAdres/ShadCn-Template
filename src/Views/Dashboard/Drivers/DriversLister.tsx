@@ -3,6 +3,7 @@ import RButton from "@/RComponents/RButton";
 import RCheckDropdown from "@/RComponents/RCheckDropdown";
 import RFlex from "@/RComponents/RFlex";
 import RImageName from "@/RComponents/RImageName";
+import RPaginateTable from "@/RComponents/RPaginateTable";
 import RSearchInput from "@/RComponents/RSearchInput";
 import RTable from "@/RComponents/RTable";
 import RTooltip from "@/RComponents/RTooltip";
@@ -12,18 +13,27 @@ import {
   TableAction,
   TableRecords,
 } from "@/types/index.type";
-import { drivers } from "@/Views/Dashboard/Drivers/fakeData";
+import { drivers } from "@/Views/Dashboard/Drivers/driversFakeData";
 import { Filter, Info, List, Plus, Rocket, Trash, View } from "lucide-react";
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const DriversLister = () => {
   console.log("rerendering: DriversLister rerendered");
   const [searchData, setSearchData] = useState<string>("");
-  const { t } = useTranslation();
   const handleSearchClicked = () => {};
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 5;
+  const handlePageChange = useCallback(
+    (page: number) => {
+      setCurrentPage(page);
+    },
+    [currentPage]
+  );
   // here we don't need to use useMemo even onlineActions is an object because it's a state and react keep tracking and it's know when the
   // object state change and when it's not so event the column depends on it it , columns will only rerendered only if the onlineAcions actually change
   // becuase it's a state
@@ -96,7 +106,6 @@ const DriversLister = () => {
                   </Button>
                 }
                 // KeepActiveItemChecked
-                closeOnSelect={false}
                 side="bottom"
                 align="center"
                 actions={onlineActions}
@@ -211,8 +220,13 @@ const DriversLister = () => {
           onClick={() => navigate("join-requests")}
         />
       </RFlex>
-
-      <RTable Records={records} />
+      <RPaginateTable
+        Records={records}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+        totalPages={totalPages}
+        paginationContainerClassName="justify-end"
+      />
     </RFlex>
   );
 };

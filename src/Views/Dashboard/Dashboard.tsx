@@ -24,7 +24,9 @@ export const DashboardContext = createContext<DashboardContextType>({
 });
 
 export default function Dashboard() {
-  const [theme, setTheme] = useState<string>(""); // Default theme
+  const [theme, setTheme] = useState<string>(
+    localStorage.getItem("theme") || ""
+  ); // Default theme
 
   const [activeLanguage, setActiveLanguage] = useState<string>(
     localStorage.getItem("lang") || "en"
