@@ -49,13 +49,13 @@ const CustomersLister = () => {
       {
         id: "name",
         renderHeader: (info) => {
-          return <span>{t("driver_name")}</span>;
+          return <span>{t("customer_name")}</span>;
         },
         renderCell: ({ row }) => {
           return (
             <RImageName
               onClick={() =>
-                navigate(`${row.original.id}?driver=${row?.original.name}`)
+                navigate(`${row.original.id}?customer=${row?.original.name}`)
               }
               className="hover:text-muted-foreground hover:underline cursor-pointer"
               name={row.original.name}
@@ -135,7 +135,7 @@ const CustomersLister = () => {
         },
       },
     ],
-    [t, genderActions,backChecked]
+    [t, genderActions, backChecked]
   );
 
   const records = useMemo(

@@ -1,4 +1,5 @@
 import { CustomRoute } from "@/types/index.type";
+import CustomerProfile from "@/Views/Dashboard/Customers/CustomerProfile/CustomerProfile";
 import CustomersLister from "@/Views/Dashboard/Customers/CustomersLister";
 import DriverProfile from "@/Views/Dashboard/Drivers/DriverProfile/DriverProfile";
 import DriversLister from "@/Views/Dashboard/Drivers/DriversLister";
@@ -25,5 +26,9 @@ export const dashboardRoutes: CustomRoute[] = [
   {
     path: "customers",
     Component: CustomersLister,
+  },
+  {
+    path: "customers/:customer",
+    Component: CustomerProfile,
   },
 ];

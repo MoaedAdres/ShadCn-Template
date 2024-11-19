@@ -294,3 +294,21 @@ export type RFlippingCardProps = {
   backFooterClassName?: string;
   backFooterComponent?: ReactNode;
 };
+
+export type TabElement = {
+  value: string;
+  title: string;
+  disabled?: boolean;
+  content?: ReactNode;
+};
+export type RTabsProps = {
+  defaultValue?: string;
+  tabs: TabElement[];
+  className?: string;
+  setActiveTab: React.Dispatch<React.SetStateAction<any>>;
+  activeTab: string;
+  innerContent?: boolean;
+  listClassName?: string;
+  triggerClassName?: string;
+  contentClassName?: string;
+};
